@@ -137,6 +137,10 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'deployment_static'
 
+# Media files
+MEDIA_URL = 'media/' if DEBUG else 'media.futurefactory.nl/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

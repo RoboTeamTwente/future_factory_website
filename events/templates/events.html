@@ -19,35 +19,21 @@
         <div id="content" class="eventcontainer">
 
             <!-- Content -->
-                    <div class="event">
-                        <img class="imgevent" src="{% static "images/FF.png" %}"  />
-                        <div class="content_event">
-
-                        <h1>Our website is live!</h1>
-                        <p>The Future Factory has gone online! The studentteams have bundled their forces to bring their innovations to the world.
-                                <br><a href="/events/ffwebsite/">[Read More]</a>
-                            </p>
-
-                        </div>
-                        <div class = "tags" >
-                            <p>16 May 2022</p>
-                        </div>
-
-                    </div>
-                    <!--
-                    <div class="event">
-
-                        <img class="imgevent" src="images/ffrecruit2.png"  />
-                        <div class="content_event">
-
-                        <h1>Interest drink student teams</h1>
-                            <p>We will host an interest drink with all the student teams of the future factory. Sign up via: <a href="https://forms.gle/NtSiS1PgCnVTSoHT7">Sign up form </a></p>
-                        </div>
-                        <div class = "tags" >
-                            <p>16 March 2022 - Future Factory</p>
-                        </div>
-                    </div>
-                -->
+            {% for event in object_list %}
+            <div class="event">
+                {% if event.image %}
+                <img class="imgevent" src="{{ event.image.url }}" alt="{{ event.summary }}">
+                {% endif %}
+                <div class="content_event">
+                    <h1>{{ event.summary }}</h1>
+                    <p>{{ event.short_description }}
+                        <br><a href="{{ event.get_absolute_url }}">[Read More]</a></p>
+                </div>
+                <div class="tags">
+                    <p>{{ event.creation_date }}</p>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

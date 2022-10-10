@@ -56,48 +56,21 @@
     <div class="container">
     <h2> News and events </h2>
         <div class="row">
-
+            {% for event in events %}
             <section class="col-6 col-12-narrower">
                 <div class="box post">
-                        <a  class="image left"><img src="{% static "images/FF.png" %}" alt="" /></a>
+                    {% if event.image %}
+                    <a href="{{ event.get_absolute_url }}" class="image left">
+                        <img src="{{ event.image.url }}" alt="{{ event.summary }}">
+                    </a>
+                    {% endif %}
                     <div class="inner">
-                        <h3>Our new website!</h3>
-                        <p>The Future Factory has gone online! The studentteams have bundled their forces to bring their innovations to the world.</p>
+                        <h3>{{ event.summary }}</h3>
+                        <p>{{ event.short_description }}</p>
                     </div>
                 </div>
             </section>
-            <section class="col-6 col-12-narrower">
-                <div class="box post" hidden>
-                    <div class="center">
-                    <a class="image left"><img src="{% static "images/ffrecruit2.png" %}" alt="" /></a>
-                </div>
-                    <div class="inner">
-                        <h3>Student Teams interest drink</h3>
-                        <p>On March 16th we will host a studenteam information drink at the Future Factory! Sign up <a href= "">here</a>. </p>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-        <div class="row">
-            <section class="col-6 col-12-narrower">
-                <div class="box post" hidden>
-                    <a  class="image left"><img src="{% static "images/FF.png" %}" alt="" /></a>
-                    <div class="inner">
-                        <h3>Our new website!</h3>
-                        <p>We just launched our new website!</p>
-                    </div>
-                </div>
-            </section>
-            <section class="col-6 col-12-narrower">
-                <div class="box post" hidden>
-                    <a href="#" class="image left"><img src="{% static "images/pic04.jpg" %}" alt="" /></a>
-                    <div class="inner">
-                        <h3>The Fourth Thing</h3>
-                        <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
-                    </div>
-                </div>
-            </section>
+            {% endfor %}
         </div>
     </div>
 </section>

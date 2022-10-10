@@ -1,5 +1,7 @@
 from django.views.generic import TemplateView
 
+from events.models import Event
+
 
 # Create your views here.
 class MainView(TemplateView):
@@ -8,6 +10,7 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
         context['current'] = "home"
+        context['events'] = Event.objects.filter(visible=True).order_by('-id').all()
         return context
 
 
