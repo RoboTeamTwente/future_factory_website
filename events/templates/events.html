@@ -1,0 +1,54 @@
+{% extends "basis.html" %}
+{% load static %}
+
+{% block title %}Events{% endblock title %}
+
+{% block banner %}
+<section id="banner" style="background-image: url('{% static "images/event.jpg" %}')">
+    <header>
+    </header>
+</section>
+{% endblock banner %}
+
+{% block content %}
+<section class="wrapper style1">
+    <div class="container">
+        <header>
+            <h2>News and events</h2>
+        </header>
+        <div id="content" class="eventcontainer">
+
+            <!-- Content -->
+                    <div class="event">
+                        <img class="imgevent" src="{% static "images/FF.png" %}"  />
+                        <div class="content_event">
+
+                        <h1>Our website is live!</h1>
+                        <p>The Future Factory has gone online! The studentteams have bundled their forces to bring their innovations to the world.
+                                <br><a href="/events/ffwebsite/">[Read More]</a>
+                            </p>
+
+                        </div>
+                        <div class = "tags" >
+                            <p>16 May 2022</p>
+                        </div>
+
+                    </div>
+                    <!--
+                    <div class="event">
+
+                        <img class="imgevent" src="images/ffrecruit2.png"  />
+                        <div class="content_event">
+
+                        <h1>Interest drink student teams</h1>
+                            <p>We will host an interest drink with all the student teams of the future factory. Sign up via: <a href="https://forms.gle/NtSiS1PgCnVTSoHT7">Sign up form </a></p>
+                        </div>
+                        <div class = "tags" >
+                            <p>16 March 2022 - Future Factory</p>
+                        </div>
+                    </div>
+                -->
+        </div>
+    </div>
+</section>
+{% endblock content %}

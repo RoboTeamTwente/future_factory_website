@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>{% block title %}{% endblock title %}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="shortcut icon" type="favicon/png" href="{% static "images/favicon.png" %}" />
+		<link rel="stylesheet" href="{% static "assets/css/main.css" %}" />
+		<link rel="stylesheet" href="{% static "assets/css/slideshow.css" %}" />
+        <link rel="stylesheet" href="{% static "assets/css/events.css" %}" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a href="/" id="logoff"><img src="{% static "images/FF.png" %}" style="height:150px"></a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li {% if current == "home" %}class="current"{% endif %}><a href="/">Home</a></li>
+
+								<li {% if current == "teams" %}class="current"{% endif %}>
+								<a href="/">Teams</a>
+								<ul>
+								<li><a href="/teams/dtt/">DroneTeam Twente</a></li>
+								<li><a href="/teams/est/">Electric Superbike Twente</a></li>
+								<li><a href="/teams/gtt/">Green Team Twente</a></li>
+								<li><a href="/teams/rtt/">RoboTeam Twente</a></li>
+								<li><a href="/teams/sbt/">Solar Boat Twente</a></li>
+							</ul>
+								<li {% if current == "events" %}class="current"{% endif %}><a href="/events/">News and events</a></li>
+								<li {% if current == "partners" %}class="current"{% endif %}><a href="/partners/">Partners</a></li>
+								<li {% if current == "contact" %}class="current"{% endif %}><a href="/contact/">Contact</a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<!-- Banner -->
+                {% block banner %}{% endblock banner %}
+
+            <!-- Content -->
+            {% block content %}{% endblock content %}
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<section class="col-3 col-6-narrower col-12-mobilep">
+								<h3>Links to the websites <br> of the student teams</h3>
+								<ul class="links">
+									<li><a href="https://droneteamtwente.nl">DroneTeam Twente</a></li>
+									<li><a href="https://electricsuperbiketwente.nl">Electric Superbike Twente</a></li>
+									<li><a href="https://greenteamtwente.nl">Green Team Twente</a></li>
+									<li><a href="https://roboteamtwente.nl">RoboTeam Twente</a></li>
+									<li><a href="https://solarboattwente.nl">Solar Boat Twente</a></li>
+								</ul>
+							</section>
+
+							<section class="col-4 col-12-narrower">
+								<h3>Get In Touch</h3>
+								 info@futurefactorytwente.nl <br>
+								 Capitool 25, 7521 PL Enschede
+							</section>
+
+							<section class="col-3 col-12-narrower">
+								<img src="{% static "images/UT_Black_Standing.png" %}" style="width:200px">
+								<img src="{% static "images/saxion_RGB.png" %}" style="width:200px">
+							</section>
+						</div>
+					</div>
+
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Future Factory Twente. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="{% static "assets/js/jquery.min.js" %}"></script>
+			<script src="{% static "assets/js/jquery.dropotron.min.js" %}"></script>
+			<script src="{% static "assets/js/browser.min.js" %}"></script>
+			<script src="{% static "assets/js/breakpoints.min.js" %}"></script>
+			<script src="{% static "assets/js/util.js" %}"></script>
+			<script src="{% static "assets/js/main.js" %}"></script>
+			<script src="{% static "assets/js/slideshow.js" %}"></script>
+
+
+	</body>
+</html>

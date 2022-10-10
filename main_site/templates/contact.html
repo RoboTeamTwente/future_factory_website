@@ -1,0 +1,32 @@
+{% extends "basis.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block banner %}
+<section id="banner" style="background-image: url('{% static "images/ffbulding.jpg" %}')">
+    <header>
+    </header>
+</section>
+{% endblock banner %}
+
+{% block content %}
+<section class="wrapper style1">
+    <div class="container">
+        <div class="row">
+            <section class="col-6 col-12-narrower">
+            <img src="{% static "images/ffstock.jpg" %}" alt="" width="100%"/>
+        </section>
+        <section class="col-6 col-12-narrower">
+            <h2>Contact</h2>
+            <p>The Future Factory houses five innovative student teams from Twente.
+                From the many different disciplines that the University of Twente and Saxion University of Applied Sciences have to offer,
+                the students work towards a better future. Be it using renewable energy sources, efficient storage or innovative technology,
+                we aim to inspire people keep innovating.</p>
+        </section>
+
+        </div>
+
+    </div>
+</section>
+{% endblock content %}

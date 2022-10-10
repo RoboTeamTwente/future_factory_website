@@ -1,0 +1,74 @@
+{% extends "basis.html" %}
+{% load static %}
+
+{% block title %}Solar Boat Twente{% endblock title %}
+
+{% block banner %}
+<section id="banner" style="background-image: url('{% static "images/sbt_banner.png" %}')">
+    <header>
+    </header>
+</section>
+{% endblock banner %}
+
+{% block content %}
+<section class="wrapper style1">
+    <div class="container">
+        <div class="row gtr-200">
+            <div class="col-4 col-12-narrower">
+                <div id="sidebar">
+
+                    <!-- Sidebar -->
+                        <section>
+                            <span class="image featured"><img src="{% static "images/SBT.png" %}" alt="" /></span>
+                        </section>
+    <!--
+                        <section>
+                            <h3>Instagram feed</h3>
+                            <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
+                            Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
+                            Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
+
+                        </section>
+      -->
+                        <section>
+                            <h3>Contact</h3>
+                            Sam van Roosendaal, Communications Manager
+      info@solarboattwente.nl<br>
+      <a href="https://www.solarboattwente.nl">www.solarboattwente.nl</a>
+                        </section>
+
+                </div>
+            </div>
+            <div class="col-8  col-12-narrower imp-narrower">
+                <div id="content">
+
+                    <!-- Content -->
+
+                        <article>
+                            <header>
+                                <h2>Solar Boat Twente</h2>
+                                <p>Renewable energy in the maritime sector</p>
+                                <img src="{% static "images/sbt_team.jpg" %}" style="width:100%">
+                            </header>
+
+
+      <h2>About Solar Boat Twente</h2>
+      <p>Solar Boat Twente is a team of highly motivated students from the University of Twente and Saxion University of Applied Sciences. We aim to build the fastest and most efficient solar powered boat in the world. To prove this, we compete in races such as the Solar Sport One competition, the Dutch Solar Boat Championships and most importantly: the Monte Carlo Solar & Energy Boat Challenge in Monaco (also known as the World Championships or the MCSEBC).
+      <br>  In order to compete with the best, we developed a hydro foiling boat designed to be as light and efficient as possible. This means that we use a set of 3 wings to generate enough ‘lift’ to raise the hull of our boat above the water surface, drastically reducing the drag forces and allowing us to almost double our speed. In order to ‘fly’ as efficiently as possible, we are developing an electronic control system to alter the wing geometry to a point where stable flight is achieved.
+      <br> At Solar Boat Twente, we design everything in house in order to fulfil our specific needs, this means making our own Solar Panels, building our own battery, designing our own propellers, etc. To find out more about the technical side of our boat, feel free to visit www.solarboattwente.nl.
+      </p>
+        <img src="{% static "images/sbt_render.png" %}" style="width:100%">
+      <h2>Our Mission</h2>
+      <p>Founded in 2016, Solar Boat Twente has been a place where technical student can explore the world of innovation and high-tech solutions for technical solutions that add on to their regular study programs. However, innovation is not our only goal with this project. Using the innovations, we come up with and the platform that is created by our project, Solar Boat Twente is eager to inspire the maritime sector to become more sustainable. Hence our mission: Innovation to Inspire the maritime sector.<br>
+        The current state of the maritime sector is not nearly where it should, and more importantly, could be. Across the globe, numerous organisations are trying to come up with solutions to make the sector more sustainable, yet greenhouse gas numbers are still frightening. Where the automotive and aviation sectors are well known on the topic of pollution but also the energy transition, the maritime sector still falls behind. One challenge is that the sectors named earlier is much more relatable to the general public than the maritime sector is: more people drive electric cars these days and people stop flying to their holiday destinations if it is a short distance. However, the maritime sector is much more unknown, people generally do not have a direct link with it, even though a significantly large percentage of goods from for example Asia that are shipped to Europe are transported via enormous polluting ships.
+      <br>  Solar Boat Twente wants to make the general public realise how the maritime sector is as relatable as for example the automotive sector, in order to stimulate and inspire the sector to improve and innovate. We do this by doing what we do best as technical students: being creative and coming up with progressive solutions: we use Innovation to Inspire.
+      </p>
+
+       </article>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

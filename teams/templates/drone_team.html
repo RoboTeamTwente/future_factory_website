@@ -1,0 +1,72 @@
+{% extends "basis.html" %}
+{% load static %}
+
+{% block title %}DroneTeam Twente{% endblock title %}
+
+{% block banner %}
+<section id="banner" style="background-image: url('{% static "images/fly_drone.JPG" %}')">
+    <header>
+    </header>
+</section>
+{% endblock banner %}
+
+{% block content %}
+<section class="wrapper style1">
+    <div class="container">
+        <div class="row gtr-200">
+            <div class="col-4 col-12-narrower">
+                <div id="sidebar">
+
+                    <!-- Sidebar -->
+                        <section>
+                            <span class="image featured"><img src="{% static "images/DTT.png" %}" alt="" /></span>
+                        </section>
+    <!--
+                        <section>
+                            <h3>Instagram feed</h3>
+                            <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
+                            Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
+                            Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
+
+                        </section>
+      -->
+                        <section>
+                            <h3>Contact</h3>
+      Rens de Boer, Communication Manager
+      info@droneteamtwente.nl <br>
+      <a href="https://www.droneteamtwente.nl">www.droneteamtwente.nl</a>
+                        </section>
+
+                </div>
+            </div>
+            <div class="col-8  col-12-narrower imp-narrower">
+                <div id="content">
+
+                    <!-- Content -->
+
+                        <article>
+                            <header>
+                                <h2>DroneTeam Twente</h2>
+                                <p>Innovating and accelerating the drone industry to make a positive impact</p>
+                                <img src="{% static "images/dtt_team.jpg" %}" style="width:100%">
+                            </header>
+      <h2>General introduction</h2>
+      <p>DroneTeam Twente is the first and only competitive student drone team in the Netherlands, based at the University of Twente. DroneTeam Twente develops drones for humanitarian aid, which are able to deliver packages fully autonomous. Each year, a completely new drone is developed by a new group of students from the UT and Saxion. DroneTeam Twente competes annually in the IMechE UAS challenge in Wales, where the drone will perform a humanitarian rescue mission in a simulated disaster area.</p>
+
+      <h2>Technical information</h2>
+      <p>The drones of DroneTeam Twente are almost completely manufactured by 3D printing. Next to being a relatively inexpensive production method, it also increases their modularity; a broken piece can easily be replaced without throwing away too much material.<br><br>
+        DroneTeam Twente focuses on the development of VTOL (‘vertical take-off and landing’) drones. These drones can take-off and land without the need for an airstrip, whose existence can not be relied upon in disaster areas. The drones are also equipped with fixed wings. By doing this, the drone can be aerodynamically optimized for horizontal flight, thereby reaching the desired location faster and more efficiently. This also increases the range of the drone.
+        <br><br>
+        Furthermore, the drone is equipped with a camera in order to map the disaster area. This information can be used to aid workers to better anticipate the situation. This camera is also connected to image recognition software, with which ground markers can be detected.</p>
+                                <img src="{% static "images/ground_drone.jpg" %}" style="width:100%;">
+                            <h2>Side projects</h2>
+        <p>Alongside developing the drone for the IMechE UAS challenge, the team has some side projects. One of them is DroneTeam Racing, in which FPV flight lessons are given using computer simulations. Another are the Dronobox workshops, where participants can build and fly a drone using a building kit made by DroneTeam. </p>
+                                <img src="{% static "images/side_proj.jpg" %}" style="width:100%">
+        </article>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,104 @@
+{% extends "basis.html" %}
+{% load static %}
+
+{% block title %}Future Factory Twente{% endblock title %}
+
+{% block banner %}
+<section id="banner" style="background-image: url('{% static "images/stockpres.jpg" %}')">
+    <header>
+    </header>
+</section>
+{% endblock banner %}
+
+{% block content %}
+<!-- Highlights -->
+<section class="wrapper style1" style="padding-bottom: 0px;">
+    <div class="container">
+        <div class="row gtr-200">
+            <section class="col-4 col-12-narrower">
+                <div class="box highlight">
+                    <i class="icon solid major fa-lightbulb"></i>
+                    <h3>Inspiration</h3>
+                    <p>We aim to inspire a new generation with the fields of technologies that we innovate in.</p>
+                </div>
+            </section>
+            <section class="col-4 col-12-narrower">
+                <div class="box highlight">
+                    <i class="icon solid major fa-wrench"></i>
+                    <h3>Innovation</h3>
+                    <p>We aim to innovate in renewable energy, robotics, artificial intelligence and the drone industry.</p>
+                </div>
+            </section>
+            <section class="col-4 col-12-narrower">
+                <div class="box highlight">
+                    <i class="icon solid major fa-handshake"></i>
+                    <h3>Collaboration</h3>
+                    <p>Having mutual goals, stimulates collaboration in all areas of the teams</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+<!-- Gigantic Heading
+<section>
+    <div class="container">
+        <header class="major">
+            <h2>Robins quote</h2>
+            <p>At the Future Factory, five student teams of Twente are housed together</p>
+        </header>
+    </div>
+</section>
+ -->
+
+<!-- Posts -->
+<section class="wrapper style1" style="padding-top: 0px;">
+    <div class="container">
+    <h2> News and events </h2>
+        <div class="row">
+
+            <section class="col-6 col-12-narrower">
+                <div class="box post">
+                        <a  class="image left"><img src="{% static "images/FF.png" %}" alt="" /></a>
+                    <div class="inner">
+                        <h3>Our new website!</h3>
+                        <p>The Future Factory has gone online! The studentteams have bundled their forces to bring their innovations to the world.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="col-6 col-12-narrower">
+                <div class="box post" hidden>
+                    <div class="center">
+                    <a class="image left"><img src="{% static "images/ffrecruit2.png" %}" alt="" /></a>
+                </div>
+                    <div class="inner">
+                        <h3>Student Teams interest drink</h3>
+                        <p>On March 16th we will host a studenteam information drink at the Future Factory! Sign up <a href= "">here</a>. </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="row">
+            <section class="col-6 col-12-narrower">
+                <div class="box post" hidden>
+                    <a  class="image left"><img src="{% static "images/FF.png" %}" alt="" /></a>
+                    <div class="inner">
+                        <h3>Our new website!</h3>
+                        <p>We just launched our new website!</p>
+                    </div>
+                </div>
+            </section>
+            <section class="col-6 col-12-narrower">
+                <div class="box post" hidden>
+                    <a href="#" class="image left"><img src="{% static "images/pic04.jpg" %}" alt="" /></a>
+                    <div class="inner">
+                        <h3>The Fourth Thing</h3>
+                        <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock content %}
