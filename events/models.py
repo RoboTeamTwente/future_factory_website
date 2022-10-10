@@ -12,5 +12,12 @@ class Event(Model):
     visible = models.BooleanField(default=True)
     creation_date = models.DateField(auto_now=True)
 
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
+
     def get_absolute_url(self):
         return reverse("event", args=[self.id])
+
+    def __str__(self):
+        return self.summary

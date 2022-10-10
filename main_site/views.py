@@ -10,7 +10,9 @@ class MainView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
         context['current'] = "home"
-        context['events'] = Event.objects.filter(visible=True).order_by('-id').all()
+
+        # Show only the latest four, still visible events.
+        context['events'] = Event.objects.filter(visible=True).order_by('-id')[:4].all()
         return context
 
 
