@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
                 ('image', models.ImageField(upload_to='events', blank=True, null=True)),
                 ('visible', models.BooleanField(default=True)),
-                ('creation_date', models.DateField(auto_now=True)),
+                ('creation_date', models.DateField()),
             ],
         ),
     ]

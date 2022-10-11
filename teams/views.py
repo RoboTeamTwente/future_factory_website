@@ -1,6 +1,17 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.views.generic.base import ContextMixin
 
+from teams.models import Team
+
+
+class TeamDetailView(DetailView):
+    model = Team
+    template_name = "team.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TeamDetailView, self).get_context_data(**kwargs)
+        context['current'] = "teams"
+        return context
 
 class TeamMixin(ContextMixin):
 

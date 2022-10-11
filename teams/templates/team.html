@@ -1,0 +1,62 @@
+{% extends "basis.html" %}
+
+{% block title %}{{ object.name }}{% endblock title %}
+
+{% block banner %}
+<section id="banner" style="background-image: url('{{ object.banner_picture.url }}')">
+    <header>
+    </header>
+</section>
+{% endblock banner %}
+
+{% block content %}
+<section class="wrapper style1">
+    <div class="container">
+        <div class="row gtr-200">
+            <div class="col-4 col-12-narrower">
+                <div id="sidebar">
+                    <!-- Sidebar -->
+                    <section>
+                        <span class="image featured"><img src="{{ object.logo.url }}" alt="{{ object.name }} logo" /></span>
+                    </section>
+    <!--
+                    <section>
+                        <h3>Instagram feed</h3>
+                        <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
+                        Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
+                        Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
+
+                    </section>
+      -->
+                    <section>
+                        <h3>Contact</h3>
+                        {{ object.contact_person }}<br>
+                        {{ object.contact_person_function }}<br><br>
+                        {{ object.contact_mail }}<br>
+                        <a href="{{ object.website }}">{{ object.website }}</a>
+                    </section>
+                </div>
+            </div>
+            <div class="col-8  col-12-narrower imp-narrower">
+                <div id="content">
+                    <!-- Content -->
+                    <article>
+                        <header>
+                            <h2>{{ object.name }}</h2>
+                            <p>{{ object.slogan }}</p>
+                            <img src="{{ object.team_picture.url }}" style="width:100%">
+                        </header>
+                        {% for section in object.sections.all %}
+                        <h2>{{ section.title }}</h2>
+                        <p>{{ section.text }}</p>
+                        {% if section.image %}
+                        <img src="{{ section.image.url }}" style="width:100%;">
+                        {% endif %}
+                        {% endfor %}
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

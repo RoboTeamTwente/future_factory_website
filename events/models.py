@@ -10,7 +10,7 @@ class Event(Model):
     description = models.TextField()
     image = models.ImageField(upload_to='events', null=True, blank=True)
     visible = models.BooleanField(default=True)
-    creation_date = models.DateField(auto_now=True)
+    creation_date = models.DateField()
 
     class Meta:
         verbose_name = "Event"
