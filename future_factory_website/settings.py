@@ -82,14 +82,14 @@ WSGI_APPLICATION = 'future_factory_website.wsgi.application'
 DATABASES = {
     'debug': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db/db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     },
     'production': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('POSTGRES_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',
+        'HOST': 'future_factory_db',
         'PORT': 5432,
     }
 }
@@ -131,15 +131,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/' if DEBUG else 'static.futurefactory.nl/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-STATIC_ROOT = BASE_DIR / 'deployment_static'
+STATIC_ROOT = '/var/www/future_factory/static'
 
 # Media files
-MEDIA_URL = 'media/' if DEBUG else 'media.futurefactory.nl/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/var/www/future_factory/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
