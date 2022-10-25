@@ -46,7 +46,7 @@
                             <p>{{ object.slogan }}</p>
                             <img src="{{ object.team_picture.url }}" style="width:100%">
                         </header>
-                        {% for section in object.sections.all %}
+                        {% for section in object.sections.all|dictsort:"id" %}
                         <h2>{{ section.title }}</h2>
                         <p>{{ section.text }}</p>
                         {% if section.image %}
