@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Model
+from django.template.defaultfilters import slugify
 from django.urls import reverse
 
 
@@ -15,11 +16,17 @@ class Team(Model):
     slogan = models.CharField(max_length=250)
     team_picture = models.ImageField(upload_to="teams")
 
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        return super(Team, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("team", args=[self.id])
+        return reverse("team", args=[self.slug])
 
 
 class TeamTextSection(Model):

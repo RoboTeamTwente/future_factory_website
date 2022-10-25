@@ -139,7 +139,7 @@ STATIC_ROOT = '/var/www/future_factory/static'
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/www/future_factory/media'
+MEDIA_ROOT = BASE_DIR / "media" if DEBUG else '/var/www/future_factory/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
