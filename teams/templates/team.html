@@ -48,7 +48,7 @@
                         </header>
                         {% for section in object.sections.all|dictsort:"id" %}
                         <h2>{{ section.title }}</h2>
-                        <p>{{ section.text }}</p>
+                        <p>{{ section.text|safe }}</p>
                         {% if section.image %}
                         <img src="{{ section.image.url }}" style="width:100%;">
                         {% endif %}
