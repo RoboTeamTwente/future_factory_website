@@ -27,7 +27,7 @@ DEBUG = True if os.environ.get('DEBUG') == "TRUE" else False
 
 # Checks done by NGINX
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl']
 
 # Application definition
 
