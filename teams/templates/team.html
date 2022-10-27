@@ -35,7 +35,7 @@
                         <i class="icon solid fa-envelope"></i> <a href="mailto:{{ object.contact_mail }}">{{ object.contact_mail }}</a><br>
                         <i class="icon solid fa-link"></i> <a href="{{ object.website }}">{{ object.website }}</a><br>
                         {% if object.contact_person_phone %}
-                            <i class="icon solid fa-mobile"></i> {{ object.contact_person_phone }}
+                            <i class="icon solid fa-mobile"></i> <a href="tel:{{ object.contact_person_phone }}">{{ object.contact_person_phone }}</a>
                         {% endif %}
                     </section>
                 </div>
