@@ -10,8 +10,8 @@ class TeamTextSectionInline(admin.StackedInline):
 class TeamAdminView(admin.ModelAdmin):
     inlines = [TeamTextSectionInline]
     list_display = ('name', )
-    fields = ('name', 'contact_person', 'contact_person_function', 'contact_mail', 'website', 'banner_picture', 'logo',
-              'slogan', 'team_picture')
+    fields = ('name', 'contact_person', 'contact_person_function', 'contact_person_phone', 'contact_mail', 'website',
+              'banner_picture', 'logo', 'slogan', 'team_picture')
 
 
 admin.site.register(Team, TeamAdminView)

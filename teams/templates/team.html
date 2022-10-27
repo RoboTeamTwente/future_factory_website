@@ -32,8 +32,11 @@
                         <h3>Contact</h3>
                         {{ object.contact_person }}<br>
                         {{ object.contact_person_function }}<br><br>
-                        {{ object.contact_mail }}<br>
-                        <a href="{{ object.website }}">{{ object.website }}</a>
+                        <i class="icon solid fa-envelope"></i> <a href="mailto:{{ object.contact_mail }}">{{ object.contact_mail }}</a><br>
+                        <i class="icon solid fa-link"></i> <a href="{{ object.website }}">{{ object.website }}</a><br>
+                        {% if object.contact_person_phone %}
+                            <i class="icon solid fa-mobile"></i> {{ object.contact_person_phone }}
+                        {% endif %}
                     </section>
                 </div>
             </div>

@@ -8,6 +8,7 @@ class Team(Model):
     name = models.CharField(max_length=100,)
     contact_person = models.CharField(max_length=250)
     contact_person_function = models.CharField(max_length=100)
+    contact_person_phone = models.CharField(max_length=15, null=True)
     contact_mail = models.EmailField()
     website = models.URLField()
 
