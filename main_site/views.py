@@ -12,7 +12,7 @@ class MainView(TemplateView):
         context['current'] = "home"
 
         # Show only the latest four, still visible events.
-        context['events'] = Event.objects.filter(visible=True).order_by('-id')[:4].all()
+        context['events'] = Event.objects.filter(visible=True).order_by('-creation_date')[:4].all()
         return context
 
 
