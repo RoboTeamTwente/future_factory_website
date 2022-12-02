@@ -19,7 +19,9 @@
                 <img src="{{ object.image.url }}" alt="" width="75%"/>
             </section>
             {% endif %}
-            <section class="col-6 col-12-narrower">
+
+{#            Widens this section if no image is present #}
+            <section class="{% if object.image %}col-6 {% endif %}col-12-narrower">
                 <h2>{{ object.summary }}</h2>
                 <p>{{ object.description|safe }}</p>
             </section>
