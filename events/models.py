@@ -7,7 +7,7 @@ from django.urls import reverse
 class Event(Model):
     summary = models.CharField(max_length=100)
     short_description = models.CharField(max_length=250)
-    description = models.TextField()
+    description = models.TextField(help_text="Warning! This field allows for the use of HTML tags. Be cautious since there are no checks in place. ALWAYS check the page immediately after creation.")
     image = models.ImageField(upload_to='events', null=True, blank=True)
     visible = models.BooleanField(default=True)
     creation_date = models.DateField()

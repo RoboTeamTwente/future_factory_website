@@ -21,7 +21,7 @@
             {% endif %}
             <section class="col-6 col-12-narrower">
                 <h2>{{ object.summary }}</h2>
-                <p>{{ object.description }}</p>
+                <p>{{ object.description|safe }}</p>
             </section>
         </div>
     </div>
