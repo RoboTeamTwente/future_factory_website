@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_quill',
     'teams.apps.TeamsConfig',
     'main_site.apps.MainSiteConfig',
     'partners.apps.PartnersConfig',
@@ -126,6 +127,22 @@ TIME_ZONE = 'Europe/Amsterdam'
 USE_I18N = True
 
 USE_TZ = True
+
+
+# Quill configuration (rich text editor)
+QUILL_CONFIGS = {
+    'default': {
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                ['bold', 'italic', 'underline', 'strike'],
+                [{'header': 3}, {'header': 4}],
+                [{'list': 'ordered'}, {'list': 'bullet'}],
+            ]
+        }
+    }
+}
 
 
 # Static files (CSS, JavaScript, Images)
