@@ -1,0 +1,5 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+{% block extrastyle %}
+    {{ block.super }}<link rel="stylesheet" href="{% static "assets/css/quill.css" %}">
+{% endblock extrastyle %}

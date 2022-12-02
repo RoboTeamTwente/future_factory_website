@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Model
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from django_quill.fields import QuillField
 
 
 class Team(Model):
@@ -32,9 +33,13 @@ class Team(Model):
 
 class TeamTextSection(Model):
     title = models.CharField(max_length=100)
-    text = models.TextField()
+    text = QuillField()
     image = models.ImageField(upload_to="teams", null=True, blank=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="sections")
+
+    @property
+    def text_html(self):
+        return self.text.html.replace("<p><br></p>", "<br>").replace("<p>", "").replace("</p>", "<br>")
 
     def __str__(self):
         return self.team.name + " - " + self.title
