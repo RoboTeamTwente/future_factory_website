@@ -3,6 +3,8 @@ from django.db.models import Model
 from django.urls import reverse
 from django_quill.fields import QuillField
 
+from future_factory_website.utils import compress
+
 
 # Create your models here.
 class Event(Model):
@@ -23,6 +25,11 @@ class Event(Model):
 
     def get_absolute_url(self):
         return reverse("event", args=[self.id])
+
+    def save(self, *args, **kwargs):
+        new_image = compress(self.image)
+        self.image = new_image
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.summary

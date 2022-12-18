@@ -4,6 +4,8 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django_quill.fields import QuillField
 
+from future_factory_website.utils import compress
+
 
 class Team(Model):
     name = models.CharField(max_length=100,)
@@ -21,7 +23,14 @@ class Team(Model):
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
+        # Slugify the team name
         self.slug = slugify(self.name)
+
+        # Compress the images that are uploaded
+        self.banner_picture = compress(self.banner_picture)
+        self.logo = compress(self.logo)
+        self.team_picture = compress(self.team_picture)
+
         return super(Team, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -40,6 +49,10 @@ class TeamTextSection(Model):
     @property
     def text_html(self):
         return self.text.html.replace("<p><br></p>", "<br>").replace("<p>", "").replace("</p>", "<br>")
+
+    def save(self, *args, **kwargs):
+        self.image = compress(self.image)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.team.name + " - " + self.title
