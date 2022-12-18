@@ -22,7 +22,7 @@
 
 {#            Widens this section if no image is present #}
             <section class="{% if object.image %}col-6 {% endif %}col-12-narrower">
-                <h2>{{ object.summary }}</h2>
+                <h2>{{ object.title }}</h2>
                 {{ object.description_html | safe }}
             </section>
         </div>

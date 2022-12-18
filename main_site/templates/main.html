@@ -61,12 +61,12 @@
                 <div class="box post">
                     {% if event.image %}
                     <a href="{{ event.get_absolute_url }}" class="image left">
-                        <img src="{{ event.image.url }}" alt="{{ event.summary }}">
+                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
                     </a>
                     {% endif %}
                     <div class="inner">
-                        <h3>{{ event.summary }}</h3>
-                        <p>{{ event.short_description }}</p>
+                        <h3>{{ event.title }}</h3>
+                        <p>{{ event.summary }}</p>
                     </div>
                 </div>
             </section>

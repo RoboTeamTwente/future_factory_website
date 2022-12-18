@@ -22,15 +22,15 @@
             {% for event in object_list %}
             <div class="event">
                 {% if event.image %}
-                <img class="imgevent" src="{{ event.image.url }}" alt="{{ event.summary }}">
+                <img class="imgevent" src="{{ event.image.url }}" alt="{{ event.title }}">
                 {% endif %}
                 <div class="content_event">
-                    <h1>{{ event.summary }}</h1>
-                    <p>{{ event.short_description }}
+                    <h1>{{ event.title }}</h1>
+                    <p>{{ event.summary }}
                         <br><a href="{{ event.get_absolute_url }}">[Read More]</a></p>
                 </div>
                 <div class="tags">
-                    <p>{{ event.creation_date }}</p>
+                    <p>{{ event.event_date }}</p>
                 </div>
             </div>
             {% endfor %}

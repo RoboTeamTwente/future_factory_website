@@ -8,12 +8,12 @@ from future_factory_website.utils import compress
 
 # Create your models here.
 class Event(Model):
-    summary = models.CharField(max_length=100)
-    short_description = models.CharField(max_length=250)
+    title = models.CharField(max_length=100, help_text="This will be the title of the news article")
+    summary = models.CharField(max_length=250, help_text="Shown as a side text on the frontpage and news page")
     description = QuillField()
     image = models.ImageField(upload_to='events', null=True, blank=True)
     visible = models.BooleanField(default=True)
-    creation_date = models.DateField()
+    event_date = models.DateField()
 
     class Meta:
         verbose_name = "Event"
@@ -32,4 +32,4 @@ class Event(Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.summary
+        return self.title
