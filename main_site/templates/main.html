@@ -64,8 +64,8 @@
                         <img src="{{ event.image.url }}" alt="{{ event.title }}">
                     </a>
                     {% endif %}
-                    <div class="inner">
-                        <h3>{{ event.title }}</h3>
+                    <div{% if event.image %} class="inner"{% endif %}>
+                        <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
                         <p>{{ event.summary }}</p>
                     </div>
                 </div>
