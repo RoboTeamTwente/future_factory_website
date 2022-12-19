@@ -27,8 +27,9 @@ class Event(Model):
         return reverse("event", args=[self.id])
 
     def save(self, *args, **kwargs):
-        new_image = compress(self.image)
-        self.image = new_image
+        if self.image:
+            new_image = compress(self.image)
+            self.image = new_image
         super().save(*args, **kwargs)
 
     def __str__(self):

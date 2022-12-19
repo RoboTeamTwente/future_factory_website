@@ -51,7 +51,8 @@ class TeamTextSection(Model):
         return self.text.html.replace("<p><br></p>", "<br>").replace("<p>", "").replace("</p>", "<br>")
 
     def save(self, *args, **kwargs):
-        self.image = compress(self.image)
+        if self.image:
+            self.image = compress(self.image)
         return super().save(*args, **kwargs)
 
     def __str__(self):
