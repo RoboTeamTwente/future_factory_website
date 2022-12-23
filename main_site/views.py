@@ -23,7 +23,3 @@ class ContactView(TemplateView):
         context = super(ContactView, self).get_context_data(**kwargs)
         context['current'] = "contact"
         return context
-
-
-class OOFFView(TemplateView):
-    template_name = "ooff.html"
