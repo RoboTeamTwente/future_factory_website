@@ -16,8 +16,8 @@ class Event(Model):
     event_date = models.DateField()
 
     class Meta:
-        verbose_name = "Event"
-        verbose_name_plural = "Events"
+        verbose_name = "event"
+        verbose_name_plural = "events"
 
     @property
     def description_html(self):
