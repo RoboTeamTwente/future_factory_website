@@ -18,8 +18,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='event',
             name='title',
-            field=models.CharField(default=None,
-                                   help_text='This will be the title of the news article', max_length=100),
+            field=models.CharField(help_text='This will be the title of the news article', max_length=100),
         ),
         migrations.RenameField(
             model_name='event',
