@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get('DEBUG') == "TRUE" else False
+DEBUG = True if os.environ.get('DEBUG').lower() == "true" else False
 
 # Checks done by NGINX
 ALLOWED_HOSTS = ['*']
