@@ -24,10 +24,11 @@ SECRET_KEY = os.environ.get('DJANGO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == "TRUE" else False
+BETA = True if os.environ.get('BETA') == "TRUE" else False
 
 # Checks done by NGINX
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl']
+CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl'] if not BETA else ['https://beta.futurefactorytwente.nl']
 
 # Application definition
 
@@ -152,7 +153,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
-STATIC_ROOT = '/var/www/future_factory/static'
+STATIC_ROOT = '/var/www/future_factory_beta/static' if BETA else '/var/www/future_factory/static'
 
 # Media files
 MEDIA_URL = '/media/'
