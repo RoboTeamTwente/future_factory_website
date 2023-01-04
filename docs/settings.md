@@ -1,0 +1,14 @@
+# Settings
+This Django project does contain some settings (`future_factory_website/settings.py`) that are specific to the way it 
+has been deployed. This page will explain these settings.
+
+| Setting                | Description                                                                                                                                                                                                                                            |
+|------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `SECRET_KEY`           | The secret key is taken from the environment variable `DJANGO_KEY`                                                                                                                                                                                     |
+| `DEBUG`                | Based on wether the DEBUG environment variable is set to `true`, we run in a debug mode. Otherwise we run in production mode                                                                                                                           |
+| `ALLOWED_HOSTS`        | The deployment server runs behind NGINX, which already does host checks. Hence we skip this on the Django side                                                                                                                                         |
+| `CSRF_TRUSTED_ORIGINS` | Only these hosts may receive POST requests                                                                                                                                                                                                             |
+| `DATABASES`            | The databases are dynamically chosen based on the `DEBUG` variable. The production database assumes that there are environment variables available for the database name, user and password. The server is expected to be found on `future_factory_db` |
+| `QUILL_CONFIGS`        | The rich text editor configuration. For more information see its [documentation](https://django-quill-editor.readthedocs.io/en/latest/pages/change-toolbar-configs.html)                                                                               |
+| `STATIC_ROOT`          | The location on the deployment server where the static files are stored (part of the code base like .js, .css files)                                                                                                                                   |               
+| `MEDIA_ROOT`           | The location on the server where the media files are stored (uploaded by a user)                                                                                                                                                                       |
