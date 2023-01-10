@@ -40,16 +40,18 @@
     </div>
 </section>
 
-<!-- Gigantic Heading
+<!-- Gigantic Heading -->
 <section>
     <div class="container">
         <header class="major">
-            <h2>Robins quote</h2>
-            <p>At the Future Factory, five student teams of Twente are housed together</p>
+            <h2>Building the next
+                <span data-type='["bike", "boat", "car", "drone", "robot"]' data-colors='["#f40000", "#1f2a44",
+                "#7CDA24", "#0063ad", "#5A1C74"]' class="typewriter"></span>
+            </h2>
+            <p>At the Future Factory, five student teams from Twente are housed together. Collaborating on five amazing projects</p>
         </header>
     </div>
 </section>
- -->
 
 <!-- Posts -->
 <section class="wrapper style1" style="padding-top: 0px;">
@@ -75,3 +77,7 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block scripts %}
+    <script src="{% static "assets/js/typewriter.js" %}"></script>
+{% endblock %}
