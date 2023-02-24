@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'teams.apps.TeamsConfig',
     'main_site.apps.MainSiteConfig',
     'partners.apps.PartnersConfig',
-    'events.apps.EventsConfig',
+    'news_articles.apps.NewsArticlesConfig',
 ]
 
 MIDDLEWARE = [
@@ -150,7 +150,7 @@ QUILL_CONFIGS = {
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static/public_html/dist",
 ]
 STATIC_ROOT = '/var/www/future_factory/static'
 

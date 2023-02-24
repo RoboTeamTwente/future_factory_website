@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-from events.models import Event
+from news_articles.models import NewsArticle
 
 
 # Create your views here.
@@ -12,7 +12,9 @@ class MainView(TemplateView):
         context['current'] = "home"
 
         # Show only the latest four, still visible events.
-        context['events'] = Event.objects.filter(visible=True).order_by('-event_date')[:4].all()
+        context['events'] = []
+
+        context['news_articles'] = NewsArticle.objects.filter(visible=True).order_by('-date')[:3].all()
         return context
 
 

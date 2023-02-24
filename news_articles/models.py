@@ -7,24 +7,24 @@ from future_factory_website.utils import compress
 
 
 # Create your models here.
-class Event(Model):
+class NewsArticle(Model):
     title = models.CharField(max_length=100, help_text="This will be the title of the news article")
     summary = models.CharField(max_length=250, help_text="Shown as a side text on the frontpage and news page")
     description = QuillField()
-    image = models.ImageField(upload_to='events', null=True, blank=True)
+    image = models.ImageField(upload_to='news_articles', null=True, blank=True)
     visible = models.BooleanField(default=True)
-    event_date = models.DateField()
+    date = models.DateField()
 
     class Meta:
-        verbose_name = "event"
-        verbose_name_plural = "events"
+        verbose_name = "news article"
+        verbose_name_plural = "news articles"
 
     @property
     def description_html(self):
         return self.description.html.replace("<p><br></p>", "<br>").replace("<p>", "").replace("</p>", "<br>")
 
     def get_absolute_url(self):
-        return reverse("event", args=[self.id])
+        return reverse("news_article", args=[self.id])
 
     def save(self, *args, **kwargs):
         if self.image:

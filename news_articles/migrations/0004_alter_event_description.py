@@ -7,7 +7,7 @@ import django_quill.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('events', '0003_alter_event_description'),
+        ('news_articles', '0003_alter_event_description'),
     ]
 
     operations = [
