@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get('DEBUG').lower() == "true" else False
+DEBUG = True if os.environ.get('DEBUG') and os.environ.get('DEBUG').lower() == "true" else False
+BETA = True if os.environ.get('BETA') and os.environ.get('BETA').lower() == "true" else False
 
 # Checks done by NGINX
 ALLOWED_HOSTS = ['*']
@@ -97,7 +98,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = DATABASES['debug'] if DEBUG else DATABASES['production']
+DATABASES['default'] = DATABASES['debug'] if (DEBUG or BETA) else DATABASES['production']
 
 
 # Password validation
@@ -158,7 +159,7 @@ STATIC_ROOT = '/var/www/future_factory/static'
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media" if DEBUG else '/var/www/future_factory/media'
+MEDIA_ROOT = BASE_DIR / "media" if (DEBUG or BETA) else '/var/www/future_factory/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
