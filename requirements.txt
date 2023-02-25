@@ -2,3 +2,4 @@ django
 psycopg2-binary
 Pillow
 django-quill-editor
+django-colorfield

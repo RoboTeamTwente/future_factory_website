@@ -1,0 +1,18 @@
+{% extends "basis.html" %}
+
+{% block title %}Server Error | Future Factory Twente{% endblock %}
+
+{% block description %}The webserver ran into an error{% endblock %}
+
+{% block content %}
+<header class="header">
+    <div class="overlay">
+        <h6 class="subtitle">Something broke, but we are not sure what</h6>
+        <h1 class="title">Whoops!</h1>
+        <div class="buttons text-center">
+            <a href="/" class="btn btn-primary rounded w-lg btn-lg my-1">Back to home</a>
+            <a onclick="window.history.back();" href="#" class="btn btn-outline-light rounded w-lg btn-lg my-1">To previous page</a>
+        </div>
+    </div>
+</header>
+{% endblock %}

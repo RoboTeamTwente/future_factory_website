@@ -1,24 +1,27 @@
+from colorfield.fields import ColorField
 from django.db import models
 from django.db.models import Model
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django_quill.fields import QuillField
 
+from facts.models import Fact
 from future_factory_website.utils import compress
 
 
 class Team(Model):
-    name = models.CharField(max_length=100,)
+    name = models.CharField(max_length=100)
     contact_person = models.CharField(max_length=250)
     contact_person_function = models.CharField(max_length=100)
     contact_person_phone = models.CharField(max_length=15, null=True)
     contact_mail = models.EmailField()
     website = models.URLField()
 
-    banner_picture = models.ImageField(upload_to="teams")
+    front_page_picture = models.ImageField(upload_to="teams", help_text="This image is used to create the hexagon on the main page. THIS PICTURE HAS TO BE SQUARE.")
+    banner_picture = models.ImageField(upload_to="teams", help_text="This picture will serve as the background on your team's page.")
     logo = models.ImageField(upload_to="teams")
+    main_color = ColorField(help_text="In most cases this would be your teams color. It is used to color the headers and icons on your team's page.")
     slogan = models.CharField(max_length=250)
-    team_picture = models.ImageField(upload_to="teams")
 
     slug = models.SlugField(unique=True)
 
@@ -29,7 +32,6 @@ class Team(Model):
         # Compress the images that are uploaded
         self.banner_picture = compress(self.banner_picture)
         self.logo = compress(self.logo)
-        self.team_picture = compress(self.team_picture)
 
         return super(Team, self).save(*args, **kwargs)
 
@@ -57,3 +59,7 @@ class TeamTextSection(Model):
 
     def __str__(self):
         return self.team.name + " - " + self.title
+
+
+class TeamFact(Fact):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="facts")

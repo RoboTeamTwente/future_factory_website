@@ -7,20 +7,10 @@ from news_articles.models import NewsArticle
 class NewsArticleListView(ListView):
     model = NewsArticle
     queryset = NewsArticle.objects.filter(visible=True)
-    template_name = "events.html"
-    ordering = "-event_date"
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['current'] = "events"
-        return context
+    template_name = "news.html"
+    ordering = "-date"
 
 
 class NewsArticleDetailView(DetailView):
     model = NewsArticle
-    template_name = "event.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['current'] = "events"
-        return context
+    template_name = "news_article.html"

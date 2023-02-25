@@ -1,65 +1,135 @@
 {% extends "basis.html" %}
 
-{% block title %}{{ object.name }}{% endblock title %}
+{% block title %}{{ object.name }}{% endblock %}
 
-{% block banner %}
-<section id="banner" style="background-image: url('{{ object.banner_picture.url }}')">
-    <header>
-    </header>
-</section>
-{% endblock banner %}
+{% block description %}{{ object.slogan }}{% endblock %}
+
+{% block head %}
+    <style>
+        .header {
+            background: url("{{ object.banner_picture.url }}") no-repeat center center fixed;
+        }
+        section.has-bg-img.bg-img-2:after {
+            background-image: url("{{ object.banner_picture.url }}");
+        }
+        section .section-title {
+            color: {{ object.main_color }};
+        }
+        .btn-primary {
+            background-color: {{ object.main_color }};
+            border-color: white;
+        }
+        .btn-primary:hover {
+            background-color: {{ object.main_color }};
+        }
+        .box .box-item i {
+            color: {{ object.main_color }};
+        }
+        .contact-card .infos .item i {
+            color: {{ object.main_color }};
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
-<section class="wrapper style1">
-    <div class="container">
-        <div class="row gtr-200">
-            <div class="col-4 col-12-narrower">
-                <div id="sidebar">
-                    <!-- Sidebar -->
-                    <section>
-                        <span class="image featured"><img src="{{ object.logo.url }}" alt="{{ object.name }} logo" /></span>
-                    </section>
-    <!--
-                    <section>
-                        <h3>Instagram feed</h3>
-                        <p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-                        Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-                        Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
+<header class="header">
+    <div class="overlay">
+        <h6 class="subtitle">{{ object.slogan }}</h6>
+        <h1 class="title">{{ object.name }}</h1>
+    </div>
+</header>
 
-                    </section>
-      -->
-                    <section>
-                        <h3>Contact</h3>
-                        {{ object.contact_person }}<br>
-                        {{ object.contact_person_function }}<br><br>
-                        <i class="icon solid fa-envelope"></i> <a href="mailto:{{ object.contact_mail }}">{{ object.contact_mail }}</a><br>
-                        <i class="icon solid fa-link"></i> <a href="{{ object.website }}">{{ object.website }}</a><br>
-                        {% if object.contact_person_phone %}
-                            <i class="icon solid fa-mobile"></i> <a href="tel:{{ object.contact_person_phone }}">{{ object.contact_person_phone }}</a>
-                        {% endif %}
-                    </section>
+<div class="box text-center">
+    <img src="{{ object.logo.url }}" alt="{{ object.name }} logo" class="w-100">
+</div>
+
+<section id="about">
+    {% for section in object.sections.all %}
+    <div class="container">
+        <div class="row align-items-center">
+            {% if forloop.counter0|divisibleby:2 and section.image %}
+            <div class="col-md-5 col-lg-4">
+                <img src="{{ section.image.url }}" alt="{{ section.title }}" class="w-100 img-thumbnail mb-3">
+            </div>
+            {% endif %}
+            <div class="col-md-7 col-lg-8">
+                <h6 class="section-title mb-3">{{ section.title }}</h6>
+                {{ section.text.html | safe }}
+            </div>
+            {% if not forloop.counter0|divisibleby:2 and section.image %}
+            <div class="col-md-5 col-lg-4">
+                <img src="{{ section.image.url }}" alt="{{ section.title }}" class="w-100 img-thumbnail mb-3">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+<section class="has-bg-img bg-img-2">
+    <div class="container text-center">
+        <h6 class="section-title mb-6" style="color: white">{{ object.name }} in numbers</h6>
+        <div class="widget-2 justify-content-center">
+            {% for fact in object.facts.all %}
+            <div class="widget-item">
+                <i class="{{ fact.icon }}"></i>
+                <h6 class="title">{{ fact.value }}</h6>
+                <div class="subtitle">{{ fact.context }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="contact-card">
+            <div class="infos">
+                <h6 class="section-subtitle">Visit Us</h6>
+                <h6 class="section-title mb-4">Get In Touch</h6>
+
+                <div class="item">
+                    <i class="ti-user"></i>
+                    <div>
+                        <h5>{{ object.contact_person }}</h5>
+                        <p>{{ object.contact_person_function }}</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="ti-mobile"></i>
+                    <div>
+                        <h5>Phone Number</h5>
+                        <p><a href="tel:{{ object.contact_person_phone }}">{{ object.contact_person_phone }}</a></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="ti-email"></i>
+                    <div class="mb-0">
+                        <h5>Email Address</h5>
+                        <p><a href="mailto:{{ object.contact_mail }}">{{ object.contact_mail }}</a></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="ti-world"></i>
+                    <div class="mb-0">
+                        <h5>Website</h5>
+                        <p><a href="{{ object.website }}">{{ object.website }}</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="col-8  col-12-narrower imp-narrower">
-                <div id="content">
-                    <!-- Content -->
-                    <article>
-                        <header>
-                            <h2>{{ object.name }}</h2>
-                            <p>{{ object.slogan }}</p>
-                            <img src="{{ object.team_picture.url }}" style="width:100%">
-                        </header>
-                        {% for section in object.sections.all|dictsort:"id" %}
-                        <h2>{{ section.title }}</h2>
-                        <p>{{ section.text_html | safe }}</p>
-                        {% if section.image %}
-                        <img src="{{ section.image.url }}" style="width:100%;">
-                        {% endif %}
-                        {% endfor %}
-                    </article>
-                </div>
+            <div class="form">
+                <h6 class="section-title mb-4">Send a Message</h6>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="contact-message" id="" cols="30" rows="7" class="form-control form-control-lg" placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">Send Message</button>
+                </form>
             </div>
         </div>
     </div>
 </section>
-{% endblock content %}
+{% endblock %}

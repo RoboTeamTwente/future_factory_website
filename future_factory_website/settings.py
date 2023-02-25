@@ -30,7 +30,6 @@ ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_quill',
+    'colorfield',
     'teams.apps.TeamsConfig',
     'main_site.apps.MainSiteConfig',
     'partners.apps.PartnersConfig',
     'news_articles.apps.NewsArticlesConfig',
+    'events.apps.EventsConfig',
+    'facts.apps.FactsConfig',
 ]
 
 MIDDLEWARE = [
