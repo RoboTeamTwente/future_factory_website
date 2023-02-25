@@ -155,7 +155,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static/public_html/dist",
 ]
-STATIC_ROOT = '/var/www/future_factory/static'
+
+if BETA:
+    STATIC_ROOT = '/var/www/future_factory_beta/static'
+else:
+    STATIC_ROOT = '/var/www/future_factory/static'
 
 # Media files
 MEDIA_URL = '/media/'
