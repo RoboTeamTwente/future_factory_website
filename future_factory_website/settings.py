@@ -163,7 +163,13 @@ else:
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media" if (DEBUG or BETA) else '/var/www/future_factory/media'
+
+if DEBUG:
+    MEDIA_ROOT = BASE_DIR / "media"
+elif BETA:
+    MEDIA_ROOT = '/var/www/future_factory_beta/media'
+else:
+    MEDIA_ROOT = '/var/www/future_factory/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
