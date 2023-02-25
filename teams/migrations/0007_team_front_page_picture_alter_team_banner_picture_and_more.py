@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='team',
             name='front_page_picture',
-            field=models.ImageField(default=None, help_text='This image is used to create the hexagon on the main page. THIS PICTURE HAS TO BE SQUARE.', upload_to='teams'),
+            field=models.ImageField(default="", help_text='This image is used to create the hexagon on the main page. THIS PICTURE HAS TO BE SQUARE.', upload_to='teams'),
             preserve_default=False,
         ),
         migrations.AlterField(
