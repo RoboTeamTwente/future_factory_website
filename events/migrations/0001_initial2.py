@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunSQL("DROP TABLE IF EXISTS events_event"),
         migrations.CreateModel(
             name='Event',
             fields=[
