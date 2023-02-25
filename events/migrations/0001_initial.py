@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('news_articles', '0007_newsarticle_delete_event')
     ]
 
     operations = [
