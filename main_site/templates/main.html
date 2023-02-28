@@ -7,6 +7,17 @@
 {# The description of the page that will be shown in search results on Google #}
 {% block description %}The Future Factory houses five innovative student teams from Twente. Where they work together on five amazing projects.{% endblock %}
 
+{% block head %}
+    <style>
+        .header {
+            background-image: url({% static "imgs/header3.jpg" %});
+        }
+        section.has-bg-img.bg-img-2::after {
+            background-image: url({% static "imgs/header2.png" %});
+        }
+    </style>
+{% endblock %}
+
 {# Additional items that should be added to the navigation bar (Home is always present) #}
 {% block nav_bar %}
     <li class="nav-item">
@@ -167,7 +178,7 @@
                             <div class="testimonial-wrapper">
                                 {% if event.image %}
                                     <div class="img-holder">
-                                        <img src="{{ event.image.url }}" alt="A drink">
+                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
                                     </div>
                                 {% endif %}
                                 <div class="body">
@@ -187,7 +198,7 @@
                             <div class="testimonial-wrapper">
                                 {% if event.image %}
                                     <div class="img-holder">
-                                        <img src="{{ event.image.url }}" alt="A drink">
+                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
                                     </div>
                                 {% endif %}
                                 <div class="body">

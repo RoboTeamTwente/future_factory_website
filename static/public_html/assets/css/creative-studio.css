@@ -10661,6 +10661,8 @@ p {
   height: 90px;
   -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
           clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .testimonial-wrapper .body {
   text-align: left;

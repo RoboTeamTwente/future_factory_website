@@ -28,7 +28,7 @@ BETA = True if os.environ.get('BETA') and os.environ.get('BETA').lower() == "tru
 
 # Checks done by NGINX
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl']
+CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl', 'https://beta.futurefactorytwente.nl']
 
 # Application definition
 INSTALLED_APPS = [
