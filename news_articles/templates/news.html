@@ -1,4 +1,5 @@
 {% extends "basis.html" %}
+{% load static %}
 
 {% block title %}News | Future Factory Twente{% endblock %}
 
@@ -8,6 +9,9 @@
 <style>
     .card.blog-post {
         margin-bottom: 10% !important;
+    }
+    .header {
+        background-image: url({% static "imgs/news_background.jpg" %});
     }
 </style>
 {% endblock %}
@@ -34,6 +38,7 @@
             {% endif %}
         {% endfor %}
 
+        {% if page_obj.has_other_pages %}
         <nav class="row justify-content-center" aria-label="Page navigation example">
             <ul class="pagination">
                 {% if page_obj.has_previous %}
@@ -47,6 +52,7 @@
                 {% endif %}
             </ul>
         </nav>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
