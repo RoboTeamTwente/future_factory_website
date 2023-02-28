@@ -9,6 +9,7 @@ class NewsArticleListView(ListView):
     queryset = NewsArticle.objects.filter(visible=True)
     template_name = "news.html"
     ordering = "-date"
+    paginate_by = 9
 
 
 class NewsArticleDetailView(DetailView):

@@ -102,36 +102,14 @@
             <div class="row">
                 {% for team in teams %}
                     {% if forloop.counter0|divisibleby:2 %}
-                        <div class="col-sm-4">
-                            <div class="img-wrapper">
-                                <img src="{{ team.front_page_picture.url }}" alt="{{ team.name }}">
-                                <a href="{{ team.get_absolute_url }}">
-                                    <div class="overlay" style="background: {{ team.main_color }}b0;">
-                                        <div class="overlay-infos">
-                                            <h5>{{ team.name }}</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        {% include "team_thumbnail.html" with team=team only %}
                     {% endif %}
                 {% endfor %}
             </div>
             <div class="row justify-content-center mt-sm-n5">
                 {% for team in teams %}
                     {% if not forloop.counter0|divisibleby:2 %}
-                        <div class="col-sm-4">
-                            <div class="img-wrapper">
-                                <img src="{{ team.front_page_picture.url }}" alt="{{ team.name }}">
-                                <a href="{{ team.get_absolute_url }}">
-                                    <div class="overlay" style="background: {{ team.main_color }}b0;">
-                                        <div class="overlay-infos">
-                                            <h5>{{ team.name }}</h5>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        {% include "team_thumbnail.html" with team=team only %}
                     {% endif %}
                 {% endfor %}
             </div>
@@ -175,41 +153,14 @@
                 <div class="col-md-6">
                     {% for event in events %}
                         {% if forloop.counter0|divisibleby:2 %}
-                            <div class="testimonial-wrapper">
-                                {% if event.image %}
-                                    <div class="img-holder">
-                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
-                                    </div>
-                                {% endif %}
-                                <div class="body">
-                                    <h6 class="title">{{ event.title }}</h6>
-                                    <h6><i class="ti-calendar"></i> {{ event.date.date }} <i class="ti-time"></i> {{ event.date.time }}</h6>
-                                    <h6><i class="ti-location-pin"></i> {{ event.location }}</h6>
-                                    <p>{{ event.summary }}</p>
-                                    <a href="{{ event.get_absolute_url }}" class="d-block mt-3">Read More...</a>
-                                </div>
-                            </div>
+                            {% include "event_thumbnail.html" with event=event only %}
                         {% endif %}
                     {% endfor %}
                 </div>
                 <div class="col-md-6">
                     {% for event in events %}
                         {% if not forloop.counter0|divisibleby:2 %}
-                            <div class="testimonial-wrapper">
-                                {% if event.image %}
-                                    <div class="img-holder">
-                                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
-                                    </div>
-                                {% endif %}
-                                <div class="body">
-                                    <h6 class="title">{{ event.title }}</h6>
-                                    <h6><i class="ti-calendar"></i> {{ event.date.date }} <i class="ti-time"></i>
-                                        {{ event.date.time }}</h6>
-                                    <h6><i class="ti-location-pin"></i> Future Factory</h6>
-                                    <p>{{ event.summary }}</p>
-                                    <a href="{{ event.get_absolute_url }}" class="d-block mt-3">Read More...</a>
-                                </div>
-                            </div>
+                            {% include "event_thumbnail.html" with event=event only %}
                         {% endif %}
                     {% endfor %}
                 </div>
@@ -225,21 +176,7 @@
 
             <div class="row">
                 {% for news_article in news_articles %}
-                <div class="col-md-4">
-                    <div class="card blog-post my-4 my-sm-5 my-md-0">
-                        {% if news_article.image %}
-                            <img src="{{ news_article.image.url }}" alt="{{ news_article.title }}">
-                        {% endif %}
-                        <div class="card-body">
-                            <div class="details mb-3">
-                                <i class="ti-calendar"></i> {{ news_article.date }}
-                            </div>
-                            <h5 class="card-title">{{ news_article.title}}</h5>
-                            <p>{{ news_article.summary }}</p>
-                            <a href="{{ news_article.get_absolute_url }}" class="d-block mt-3">Read More...</a>
-                        </div>
-                    </div>
-                </div>
+                    {% include "news_article_thumbnail.html" with news_article=news_article only %}
                 {% endfor %}
             </div>
             <div class="row justify-content-center">

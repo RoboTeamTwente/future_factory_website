@@ -22,98 +22,29 @@
 
 <section id="news">
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card blog-post my-4 my-sm-5 my-md-0">
-                    <img src="../../static/public_html/assets/imgs/news/saxion-workshop.jpg" alt="Saxion Public Relations and Communications workshop">
-                    <div class="card-body">
-                        <div class="details mb-3">
-                            <i class="ti-calendar"></i> Feb. 3, 2023
-                        </div>
-                        <h5 class="card-title">Saxion Public Relations and Communications workshop</h5>
-                        <p>How to build a brand and in what ways does the Future Factory wish to stand out. Rozanne Harleman, corporate communications advisor of the Saxion Universtiy of Applied Sciences has share all her knowledge and insights into the topic!</p>
-                        <a href="javascript:void(0)" class="d-block mt-3">Read More...</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card blog-post my-4 my-sm-5 my-md-0">
-                    <img src="../../static/public_html/assets/imgs/news/alumni-visit.JPG" alt="Alumni network visits Future Factory">
-                    <div class="card-body">
-                        <div class="details mb-3">
-                            <i class="ti-calendar"></i> Jan. 26, 2023
-                        </div>
-                        <h5 class="card-title">Alumni network visits Future Factory</h5>
-                        <p>On the 26th of January 2023 the Executive Board of the University of Twente and their network of alumni had a tour through the Future Factory. </p>
-                        <a href="javascript:void(0)" class="d-block mt-3">Read More...</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card blog-post my-4 my-sm-5 my-md-0">
-                    <img src="../../static/public_html/assets/imgs/news/vdl-workshop.jpg" alt="VDL Technical Drawing Workshop">
-                    <div class="card-body">
-                        <div class="details mb-3">
-                            <i class="ti-calendar"></i> Dec. 13, 2022
-                        </div>
-                        <h5 class="card-title">VDL Technical Drawing Workshop</h5>
-                        <p>On Tuesday the 13th of December VDL.</p>
-                        <a href="javascript:void(0)" class="d-block mt-3">Read More...</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% for news_article in object_list %}
+            {% if forloop.counter0|divisibleby:3 %}
+            <div class="row">
+            {% endif %}
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card blog-post my-4 my-sm-5 my-md-0">
-                    <img src="../../static/public_html/assets/imgs/news/saxion-workshop.jpg" alt="Saxion Public Relations and Communications workshop">
-                    <div class="card-body">
-                        <div class="details mb-3">
-                            <i class="ti-calendar"></i> Feb. 3, 2023
-                        </div>
-                        <h5 class="card-title">Saxion Public Relations and Communications workshop</h5>
-                        <p>How to build a brand and in what ways does the Future Factory wish to stand out. Rozanne Harleman, corporate communications advisor of the Saxion Universtiy of Applied Sciences has share all her knowledge and insights into the topic!</p>
-                        <a href="javascript:void(0)" class="d-block mt-3">Read More...</a>
-                    </div>
-                </div>
+            {% include "news_article_thumbnail.html" with news_article=news_article only %}
+
+            {% if forloop.counter|divisibleby:3 or forloop.revcounter0 == 0 %}
             </div>
-            <div class="col-md-4">
-                <div class="card blog-post my-4 my-sm-5 my-md-0">
-                    <img src="../../static/public_html/assets/imgs/news/alumni-visit.JPG" alt="Alumni network visits Future Factory">
-                    <div class="card-body">
-                        <div class="details mb-3">
-                            <i class="ti-calendar"></i> Jan. 26, 2023
-                        </div>
-                        <h5 class="card-title">Alumni network visits Future Factory</h5>
-                        <p>On the 26th of January 2023 the Executive Board of the University of Twente and their network of alumni had a tour through the Future Factory. </p>
-                        <a href="javascript:void(0)" class="d-block mt-3">Read More...</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card blog-post my-4 my-sm-5 my-md-0">
-                    <img src="../../static/public_html/assets/imgs/news/vdl-workshop.jpg" alt="VDL Technical Drawing Workshop">
-                    <div class="card-body">
-                        <div class="details mb-3">
-                            <i class="ti-calendar"></i> Dec. 13, 2022
-                        </div>
-                        <h5 class="card-title">VDL Technical Drawing Workshop</h5>
-                        <p>On Tuesday the 13th of December VDL gave us a workshop on technical drawing and we are very excited to tell you about what we learned.</p>
-                        <a href="javascript:void(0)" class="d-block mt-3">Read More...</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            {% endif %}
+        {% endfor %}
+
         <nav class="row justify-content-center" aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#"><i class="ti-angle-double-left"></i></a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="ti-angle-double-right"></i></a></li>
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1"><i class="ti-angle-double-left"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                {% endif %}
+                <li class="page-item active"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"><i class="ti-angle-double-right"></i></a></li>
+                {% endif %}
             </ul>
         </nav>
     </div>

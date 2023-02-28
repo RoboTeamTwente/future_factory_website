@@ -1,0 +1,12 @@
+<div class="col-sm-4">
+    <div class="img-wrapper">
+        <img src="{{ team.front_page_picture.url }}" alt="{{ team.name }}">
+        <a href="{{ team.get_absolute_url }}">
+            <div class="overlay" style="background: {{ team.main_color }}b0;">
+                <div class="overlay-infos">
+                    <h5>{{ team.name }}</h5>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
