@@ -23,7 +23,7 @@ class TeamAdminView(admin.ModelAdmin):
         qs = super().get_queryset(request)
         if request.user.is_superuser:
             return qs
-        if hasattr(request.user, 'team'):
+        if hasattr(request.user, 'team_account'):
             return qs.filter(pk=request.user.team_account.team.pk)
 
 
