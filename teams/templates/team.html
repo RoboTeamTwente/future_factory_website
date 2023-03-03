@@ -118,14 +118,23 @@
                 </div>
             </div>
             <div class="form">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                         {{ message }}
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                         </button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
                 <h6 class="section-title mb-4">Send a Message</h6>
-                <form>
+                <form method="post" action="send_email/">
+                    {% csrf_token %}
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                        {{ contact_form.sender_mail }}
                     </div>
-                    <div class="form-group">
-                        <textarea name="contact-message" id="" cols="30" rows="7" class="form-control form-control-lg" placeholder="Message"></textarea>
-                    </div>
+                        {{ contact_form.message }}
                     <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">Send Message</button>
                 </form>
             </div>

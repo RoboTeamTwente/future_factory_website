@@ -22,6 +22,7 @@ var paths = {
         root:       'public_html/assets',
         html:       'public_html/**/*.html',
         css:        'public_html/assets/css/*.css',
+        quill:      'public_html/assets/css/quill.css',
         js:         'public_html/assets/js/*.js',
         vendors:    'public_html/assets/vendors/**/*.*',
         imgs:       'public_html/assets/imgs/**/*.+(png|jpg|gif|svg)',
@@ -51,6 +52,13 @@ gulp.task('css', function() {
     .pipe(cleanCSS({compatibility: 'ie8'}))
     .pipe(concat('creative-studio.css'))
     .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(paths.dist.css))
+});
+
+gulp.task('quill', function () {
+    return gulp.src(paths.src.quill)
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(concat('quill.css'))
     .pipe(gulp.dest(paths.dist.css))
 });
 
@@ -91,7 +99,7 @@ gulp.task('clean', function () {
 });
 
 // Prepare all assets for production
-gulp.task('build', gulp.series('sass', 'css', 'js', 'vendors', 'img'));
+gulp.task('build', gulp.series('sass', 'css', 'quill', 'js', 'vendors', 'img'));
 
 
 // Watch (SASS, CSS, JS, and HTML) reload browser on change
