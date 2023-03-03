@@ -58,11 +58,17 @@ class EmailModelAdmin(admin.ModelAdmin):
     actions = ['mark_as_read']
 
     def get_queryset(self, request):
+        """
+        Superusers are allowed to read all the emails.
+        Team accounts can read both their own emails and emails meant for the Future Factory in general.
+        Other accounts can only read general emails.
+        """
         qs = super().get_queryset(request)
         if request.user.is_superuser:
             return qs
         if hasattr(request.user, 'team_account'):
             return qs.filter(Q(recipient=request.user.team_account.team) | Q(recipient__isnull=True))
+        return qs.filter(recipient__isnull=True)
 
     @admin.action(description="Mark the selected emails as read")
     def mark_as_read(self, request, queryset):

@@ -20,11 +20,17 @@ class TeamAdminView(admin.ModelAdmin):
     exclude = ('slug', )
 
     def get_queryset(self, request):
+        """
+        Admin accounts can edit each team.
+        Team accounts can edit their own team.
+        Other accounts do not have any access.
+        """
         qs = super().get_queryset(request)
         if request.user.is_superuser:
             return qs
         if hasattr(request.user, 'team_account'):
             return qs.filter(pk=request.user.team_account.team.pk)
+        return qs.none()
 
 
 admin.site.register(Team, TeamAdminView)
