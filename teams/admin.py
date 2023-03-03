@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TeamTextSection, Team, TeamFact
+from .models import TeamTextSection, Team, TeamFact, TeamAccount
 
 
 # Register your models here.
@@ -19,5 +19,13 @@ class TeamAdminView(admin.ModelAdmin):
     list_display = ('name', )
     exclude = ('slug', )
 
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        if hasattr(request.user, 'team'):
+            return qs.filter(pk=request.user.team_account.team.pk)
+
 
 admin.site.register(Team, TeamAdminView)
+admin.site.register(TeamAccount)

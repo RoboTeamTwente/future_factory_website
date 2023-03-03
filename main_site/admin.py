@@ -1,6 +1,7 @@
 from gettext import ngettext
 
 from django.contrib import admin, messages
+from django.db.models import Q
 
 from main_site.models import Email
 from teams.models import Team
@@ -17,8 +18,12 @@ class RecipientListFilter(admin.SimpleListFilter):
 
     def lookups(self, request, model_admin):
         options = [('FF', 'Future Factory')]
-        for team in Team.objects.all():
-            options.append((team.pk, team.name))
+
+        if request.user.is_superuser:
+            for team in Team.objects.all():
+                options.append((team.pk, team.name))
+        elif hasattr(request.user, 'team_account'):
+            options.append((request.user.team_account.team, request.user.team_account.team.name))
         return options
 
     def queryset(self, request, queryset):
@@ -44,12 +49,20 @@ class ReadListFilter(admin.SimpleListFilter):
         if self.value() == 'U':
             return queryset.filter(read=False)
 
+
 class EmailModelAdmin(admin.ModelAdmin):
     readonly_fields = ('email_sender', 'receiver', 'message')
     fields = ('email_sender', 'receiver', 'message', 'read')
     list_display = ('email_sender', 'receiver', 'read')
     list_filter = (RecipientListFilter, ReadListFilter)
     actions = ['mark_as_read']
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        if request.user.is_superuser:
+            return qs
+        if hasattr(request.user, 'team_account'):
+            return qs.filter(Q(recipient=request.user.team_account.team) | Q(recipient__isnull=True))
 
     @admin.action(description="Mark the selected emails as read")
     def mark_as_read(self, request, queryset):

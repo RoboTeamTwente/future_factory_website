@@ -1,4 +1,5 @@
 from colorfield.fields import ColorField
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Model
 from django.template.defaultfilters import slugify
@@ -40,6 +41,14 @@ class Team(Model):
 
     def get_absolute_url(self):
         return reverse("team", args=[self.slug])
+
+
+class TeamAccount(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='team_account')
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)
 
 
 class TeamTextSection(Model):
