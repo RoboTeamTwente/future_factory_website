@@ -31,6 +31,7 @@ class Team(Model):
         self.slug = slugify(self.name)
 
         # Compress the images that are uploaded
+        self.front_page_picture = compress(self.front_page_picture)
         self.banner_picture = compress(self.banner_picture)
         self.logo = compress(self.logo)
 

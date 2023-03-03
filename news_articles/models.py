@@ -28,8 +28,7 @@ class NewsArticle(Model):
 
     def save(self, *args, **kwargs):
         if self.image:
-            new_image = compress(self.image)
-            self.image = new_image
+            self.image = compress(self.image)
         super().save(*args, **kwargs)
 
     def __str__(self):
