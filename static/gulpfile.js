@@ -26,6 +26,7 @@ var paths = {
         js:         'public_html/assets/js/*.js',
         vendors:    'public_html/assets/vendors/**/*.*',
         imgs:       'public_html/assets/imgs/**/*.+(png|jpg|gif|svg)',
+        high_qual:  'public_html/assets/imgs/**/high*.+(png|jpg|gif|svg)',
         scss:       'public_html/assets/scss/**/*.scss'
     },
     dist: {
@@ -86,6 +87,11 @@ gulp.task('img', function(){
     .pipe(gulp.dest(paths.dist.imgs));
 });
 
+gulp.task('high_quality', function () {
+    return gulp.src(paths.src.high_qual)
+    .pipe(gulp.dest(paths.dist.imgs))
+})
+
 // copy vendors to dist
 gulp.task('vendors', function(){
     return gulp.src(paths.src.vendors)
@@ -99,7 +105,7 @@ gulp.task('clean', function () {
 });
 
 // Prepare all assets for production
-gulp.task('build', gulp.series('sass', 'css', 'quill', 'js', 'vendors', 'img'));
+gulp.task('build', gulp.series('sass', 'css', 'quill', 'js', 'vendors', 'img', 'high_quality'));
 
 
 // Watch (SASS, CSS, JS, and HTML) reload browser on change

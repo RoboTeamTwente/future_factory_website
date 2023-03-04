@@ -52,16 +52,16 @@
                 <div class="col">
                     <h6 class="section-subtitle">Our shared brand</h6>
                     <h6 class="section-title">Logos and pictures</h6>
-                    <img src="{% static "imgs/logo.png" %}" alt="Future Factory logo" class="w-sm mb-3">
+                    <img src="{% static "imgs/high_quality_logo.png" %}" alt="Future Factory logo" class="w-100 mb-3">
                     <p>
                         Our logo uniquely identifies our projects and the individual teams. It is inspired by each
                         team's color palette.
                     </p>
-                    <a target="_blank" href="#">
-                        <div class="btn btn-primary">SVG</div>
-                    </a>
-                    <a target="_blank" href="#">
+                    <a target="_blank" href="{% static "imgs/high_quality_logo.png" %}">
                         <div class="btn btn-primary">PNG</div>
+                    </a>
+                    <a target="_blank" href="{% static "imgs/high_quality_logo.svg" %}">
+                        <div class="btn btn-primary">SVG</div>
                     </a>
                     <p class="mt-3">
                         High quality pictures of us can be found below, please click on an image to get the high quality
@@ -86,15 +86,16 @@
                     <h6 class="section-title">Teams</h6>
                     {% for team in teams %}
                         <h4 style="color: {{ team.main_color }};" class="mt-4">{{ team.name }}</h4>
-                        <h5>Logo</h5>
                         <img src="{{ team.logo.url }}" alt="{{ team.name }} logo" class="w-100">
                         <p>Download as</p>
-                        <a target="_blank" href="#">
-                            <span class="btn btn-primary" style="background-color: {{ team.main_color }}; border-color: {{ team.main_color }}">SVG</span>
-                        </a>
-                        <a target="_blank" href="#">
+                        <a target="_blank" href="{{ team.logo.url }}">
                             <span class="btn btn-primary" style="background-color: {{ team.main_color }}; border-color: {{ team.main_color }}">PNG</span>
                         </a>
+                        {% if team.logo_svg %}
+                        <a target="_blank" href="{{ team.logo_svg.url }}">
+                            <span class="btn btn-primary" style="background-color: {{ team.main_color }}; border-color: {{ team.main_color }}">SVG</span>
+                        </a>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
