@@ -9,20 +9,21 @@
 	width: 95%;
 	max-width: 1050px;
 	border: 1px solid rgba($border-color,.15);
+	background-color: $white;
 	border-radius: $border-radius;
 	z-index: 9999;
 	@include transition(all,.33s);
 	padding: 0 10px;
 
 	.navbar-toggler {
-		border: 1px solid rgba($gray-200,.2);
+		border: 1px solid rgba($primary,.5);
 		height: 55px;
 
 		span{
 			width: 35px;
 			height: 3px ;
 			display: block;
-			background-color: rgba($gray-200,.2);
+			background-color: rgba($primary,.5);
 			border-radius: 10px;
 
 			&:after,
@@ -32,7 +33,7 @@
 				display: block;
 				height: 3px;
 				color: $gray-700;
-				background-color: rgba($gray-200,.2);
+				background-color: rgba($primary,.5);
 			}
 
 			&:after {
@@ -59,7 +60,7 @@
 		margin: 0 5px;
 		font-weight: 600;
 		font-size: 14px;
-		color: $white !important;
+		color: $primary !important;
 
 
 		&.active {
@@ -79,12 +80,12 @@
 		border-bottom: 1px solid $gray-200; 
 
 		.navbar-toggler {
-			border-color: rgba($gray-700,.2) !important;
+			border-color: $primary !important;
 
 			span,
 			span:before,
 			span:after {
-				background: rgba($gray-700,.2) !important;
+				background: $primary !important;
 			}
 		}
 
