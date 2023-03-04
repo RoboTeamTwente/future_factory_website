@@ -385,12 +385,14 @@
     background: $white;
     box-shadow: 1px 3px 10px rgba($gray-500,.4);
     padding: 40px 0;
-    display: flex;;
+    display: flex;
+    flex-wrap: wrap;
 
     .infos {
         padding: 0 40px;
         min-width: 400px;
         border-right: 1px solid $border-color;
+        flex-grow: 1;
 
         .item {
             display: flex;;
@@ -428,7 +430,10 @@
 
     @include media-breakpoint-down(md) {
         .infos {
-            display: none;
+            width: 100%;
+        }
+        .form {
+            width: 100%;
         }
     }
 }
