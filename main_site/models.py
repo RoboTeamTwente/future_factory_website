@@ -32,7 +32,8 @@ class PressPicture(models.Model):
             return mark_safe(f"<img src='{self.thumbnail.url}' style='width:200px'>")
 
     def save(self, *args, **kwargs):
-        self.thumbnail = compress(image=self.picture, quality=40)
+        if self.picture:
+            self.thumbnail = compress(image=self.picture, quality=40)
         super().save(*args, **kwargs)
 
     def __str__(self):
