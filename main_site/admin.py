@@ -51,8 +51,8 @@ class ReadListFilter(admin.SimpleListFilter):
 
 
 class EmailModelAdmin(admin.ModelAdmin):
-    readonly_fields = ('email_sender', 'receiver', 'message')
-    fields = ('email_sender', 'receiver', 'message', 'read')
+    readonly_fields = ('email_sender', 'receiver', 'time_send', 'message')
+    fields = ('email_sender', 'receiver', 'time_send', 'message', 'read')
     list_display = ('email_sender', 'receiver', 'read')
     list_filter = (RecipientListFilter, ReadListFilter)
     actions = ['mark_as_read']
@@ -83,6 +83,7 @@ class EmailModelAdmin(admin.ModelAdmin):
 class PressPictureModelAdmin(admin.ModelAdmin):
     fields = ('picture', 'image_preview')
     readonly_fields = ('image_preview', )
+
 
 admin.site.register(Email, EmailModelAdmin)
 admin.site.register(PressPicture, PressPictureModelAdmin)
