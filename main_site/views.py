@@ -1,15 +1,12 @@
 from django.contrib import messages
-from django.core.exceptions import SuspiciousOperation
-from django.core.mail import send_mail
-from django.http import BadHeaderError
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import TemplateView
 
 from events.models import Event
 from future_factory_website.forms import ContactForm
-from main_site.models import Email
+from main_site.models import Email, PressPicture
 from news_articles.models import NewsArticle
 from teams.models import Team
 
@@ -31,6 +28,16 @@ class MainView(TemplateView):
 
         # Add in our contact form
         context['contact_form'] = ContactForm()
+        return context
+
+
+class PressView(TemplateView):
+    template_name = "press.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['teams'] = Team.objects.order_by('name').all()
+        context['pictures'] = PressPicture.objects.all()
         return context
 
 

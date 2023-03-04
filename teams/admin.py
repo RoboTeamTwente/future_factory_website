@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import TeamTextSection, Team, TeamFact, TeamAccount
 
 
-# Register your models here.
 class TeamTextSectionInline(admin.StackedInline):
     model = TeamTextSection
+
 
 class TeamFactInline(admin.TabularInline):
     model = TeamFact

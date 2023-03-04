@@ -1,0 +1,103 @@
+{% extends "basis.html" %}
+{% load static %}
+
+{# The title of the current page #}
+{% block title %}Press | Future Factory Twente{% endblock %}
+
+{# The description of the page that will be shown in search results on Google #}
+{% block description %}The Future Factory houses five innovative student teams from Twente. Where they work together on five amazing projects.{% endblock %}
+
+{% block head %}
+    <style>
+        .header {
+            background-image: url({% static "imgs/header4.jpg" %});
+        }
+    </style>
+{% endblock %}
+
+{# The content of this page. This includes everything, expect for the navigation bar and footer. #}
+{% block content %}
+
+    {# The nice header showing typing text and a fancy background #}
+    <header class="header">
+        <div class="overlay">
+            <h6 class="subtitle">Materials for the press</h6>
+            <h1 class="title">Press</h1>
+        </div>
+    </header>
+
+    {# The contents of this press page. Each subsection consists out of two rows. One dedicated to the title #}
+    {# (and possibly the subtitle). The other row if for an image and the text. #}
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h6 class="section-title mb-3">Toolkit</h6>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    <p>
+                        In our Future Factory we constantly try to improve our projects and build new solutions. As a
+                        result of this we attract the press or other interested parties. On this page one can find
+                        information that can be useful when one would like to write something about our teams.
+                    </p>
+                    <p>
+                        Over here you will be able to find various images that can be used when writing an article,
+                        including our logos, high-quality pictures and pictures from individual teams.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h6 class="section-subtitle">Our shared brand</h6>
+                    <h6 class="section-title">Logos and pictures</h6>
+                    <img src="{% static "imgs/logo.png" %}" alt="Future Factory logo" class="w-sm mb-3">
+                    <p>
+                        Our logo uniquely identifies our projects and the individual teams. It is inspired by each
+                        team's color palette.
+                    </p>
+                    <a target="_blank" href="#">
+                        <div class="btn btn-primary">SVG</div>
+                    </a>
+                    <a target="_blank" href="#">
+                        <div class="btn btn-primary">PNG</div>
+                    </a>
+                    <p class="mt-3">
+                        High quality pictures of us can be found below, please click on an image to get the high quality
+                        version.
+                    </p>
+                    {% for picture in pictures %}
+                        {% if forloop.counter0|divisibleby:2 %}
+                        <div class="row mb-4">
+                        {% endif %}
+                        <div class="col">
+                            <a href="{{ picture.picture.url }}" target="_blank" title="Open high quality version">
+                                <img src="{{ picture.thumbnail.url }}" alt="{{ picture.picture.name }}" class="img-thumbnail w-100">
+                            </a>
+                        </div>
+                        {% if not forloop.counter0|divisibleby:2 or forloop.revcounter0 == 0 %}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-md col-lg-4">
+                    <h6 class="section-subtitle">Individual</h6>
+                    <h6 class="section-title">Teams</h6>
+                    {% for team in teams %}
+                        <h4 style="color: {{ team.main_color }};" class="mt-4">{{ team.name }}</h4>
+                        <h5>Logo</h5>
+                        <img src="{{ team.logo.url }}" alt="{{ team.name }} logo" class="w-100">
+                        <p>Download as</p>
+                        <a target="_blank" href="#">
+                            <span class="btn btn-primary" style="background-color: {{ team.main_color }}; border-color: {{ team.main_color }}">SVG</span>
+                        </a>
+                        <a target="_blank" href="#">
+                            <span class="btn btn-primary" style="background-color: {{ team.main_color }}; border-color: {{ team.main_color }}">PNG</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

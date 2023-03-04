@@ -11203,6 +11203,7 @@ pre .code {
 .header .overlay .title {
   font-size: calc(40px + 50 * (100vw - 320px) / 880);
   margin-bottom: 40px;
+  text-align: center;
 }
 @media (max-width: 767.98px) {
   .header .overlay .subtitle {

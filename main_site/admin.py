@@ -3,7 +3,7 @@ from gettext import ngettext
 from django.contrib import admin, messages
 from django.db.models import Q
 
-from main_site.models import Email
+from main_site.models import Email, PressPicture
 from teams.models import Team
 
 
@@ -80,4 +80,9 @@ class EmailModelAdmin(admin.ModelAdmin):
         ) % updated, messages.SUCCESS)
 
 
+class PressPictureModelAdmin(admin.ModelAdmin):
+    fields = ('picture', 'image_preview')
+    readonly_fields = ('image_preview', )
+
 admin.site.register(Email, EmailModelAdmin)
+admin.site.register(PressPicture, PressPictureModelAdmin)
