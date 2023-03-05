@@ -1,0 +1,106 @@
+#partner-hexagons {
+  width: 620.5px;
+  height: 606px;
+  position: relative;
+  display: block;
+}
+#partner-hexagons .hexagon {
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 5;
+  background-color: white;
+}
+#partner-hexagons .hexagon img {
+  width: 90%;
+}
+#partner-hexagons .hexagon:hover {
+  -webkit-filter: opacity(80%);
+          filter: opacity(80%);
+}
+#partner-hexagons .hexagon.big {
+  width: 250px;
+  height: 300px;
+  -webkit-clip-path: polygon(0% 67%, 10% 84%, 30% 84%, 40% 100%, 60% 100%, 70% 84%, 90% 84%, 100% 67%, 90% 50%, 100% 33%, 90% 17%, 70% 17%, 60% 0%, 40% 0%, 30% 17%, 10% 17%, 0% 33%, 10% 50%);
+          clip-path: polygon(0% 67%, 10% 84%, 30% 84%, 40% 100%, 60% 100%, 70% 84%, 90% 84%, 100% 67%, 90% 50%, 100% 33%, 90% 17%, 70% 17%, 60% 0%, 40% 0%, 30% 17%, 10% 17%, 0% 33%, 10% 50%);
+}
+#partner-hexagons .hexagon.medium {
+  width: 175px;
+  height: 200px;
+}
+#partner-hexagons .hexagon.medium.left {
+  -webkit-clip-path: polygon(0% 50%, 14% 75%, 43% 75%, 57% 100%, 86% 100%, 100% 75%, 86% 50%, 100% 75%, 86% 50%, 100% 25%, 86% 0%, 57% 0%, 43% 25%, 14% 25%);
+          clip-path: polygon(0% 50%, 14% 75%, 43% 75%, 57% 100%, 86% 100%, 100% 75%, 86% 50%, 100% 75%, 86% 50%, 100% 25%, 86% 0%, 57% 0%, 43% 25%, 14% 25%);
+  margin-right: -14%;
+}
+#partner-hexagons .hexagon.medium.left img {
+  margin-right: 5%;
+}
+#partner-hexagons .hexagon.medium.right {
+  -webkit-clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+          clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+  margin-right: -14%;
+}
+#partner-hexagons .hexagon.medium.right .hexagon-content {
+  -webkit-clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+          clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+}
+#partner-hexagons .hexagon.medium.right img {
+  margin-left: 5%;
+}
+#partner-hexagons .hexagon.small {
+  width: 100px;
+  height: 100px;
+  -webkit-clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+          clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+}
+#partner-hexagons .hexagon.small img {
+  width: 80%;
+}
+#partner-hexagons .hexagon#ff {
+  left: 152.5px;
+  top: 152px;
+  z-index: 1;
+}
+#partner-hexagons .hexagon#est {
+  left: 151.5px;
+  top: 0;
+}
+#partner-hexagons .hexagon#sbt {
+  left: 305px;
+  top: 50px;
+}
+#partner-hexagons .hexagon#dtt {
+  top: 152px;
+  left: 0;
+}
+#partner-hexagons .hexagon#rtt {
+  top: 252px;
+  left: 381.25px;
+}
+#partner-hexagons .hexagon#gtt {
+  top: 355px;
+  left: 75.25px;
+}
+#partner-hexagons .hexagon#ut {
+  top: 405px;
+  left: 228.75px;
+}
+#partner-hexagons .hexagon#symbol {
+  top: 100px;
+  left: 457.5px;
+}
+#partner-hexagons .hexagon#eshuis {
+  top: 405px;
+  left: 382.25px;
+}

@@ -1,0 +1,115 @@
+$hexagon_small_width: 50px;
+$hexagon_small_height: $hexagon_small_width;
+
+$hexagon_medium_height: $hexagon_small_height * 2;
+$hexagon_medium_width: $hexagon_small_width * 1.75;
+
+$hexagon_big_height: $hexagon_small_height * 3;
+$hexagon_big_width: $hexagon_small_width * 2.5;
+
+$hexagon_distance: 2px;
+
+#partner-hexagons {
+    width: $hexagon_medium_width * 3.5 + 4 * $hexagon_distance;
+    height: $hexagon_small_height * 6 + 3 * $hexagon_distance;
+    position: relative;
+    display: block;
+
+    .hexagon {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+        background-color: white;
+
+        img {
+            width: 90%;
+        }
+
+        &:hover {
+            filter: opacity(80%);
+        }
+
+        // Different sizes of hexagons
+        &.big {
+            width: $hexagon_big_width;
+            height: $hexagon_big_height;
+            clip-path: polygon(0% 67%, 10% 84%, 30% 84%, 40% 100%, 60% 100%, 70% 84%, 90% 84%, 100% 67%, 90% 50%, 100% 33%, 90% 17%, 70% 17%, 60% 0%, 40% 0%, 30% 17%, 10% 17%, 0% 33%, 10% 50%);
+        }
+        &.medium {
+            width: $hexagon_medium_width;
+            height: $hexagon_medium_height;
+
+            &.left {
+                clip-path: polygon(0% 50%, 14% 75%, 43% 75%, 57% 100%, 86% 100%, 100% 75%, 86% 50%, 100% 75%, 86% 50%, 100% 25%, 86% 0%, 57% 0%, 43% 25%, 14% 25%);
+                margin-right: -14%;
+
+                img {
+                    margin-right: 5%;
+                }
+            }
+
+            &.right {
+                clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+                margin-right: -14%;
+
+                .hexagon-content {
+                    clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+                }
+
+                img {
+                    margin-left: 5%;
+                }
+            }
+        }
+        &.small {
+            width: $hexagon_small_width;
+            height: $hexagon_small_height;
+            clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+
+            img {
+                width: 80%;
+            }
+        }
+
+        // Positioning of each hexagon
+        &#ff {
+            left: $hexagon_medium_width * .86 + $hexagon_distance;
+            top: $hexagon_medium_height * .75 + $hexagon_distance;
+            z-index: 1;
+        }
+        &#est {
+            left: $hexagon_medium_width * .86 + .5 * $hexagon_distance;
+            top: 0;
+        }
+        &#sbt {
+            left: $hexagon_medium_width * 1.72 + 2 * $hexagon_distance;
+            top: $hexagon_medium_height * .25;
+        }
+        &#dtt {
+            top: $hexagon_medium_height * .75 + $hexagon_distance;
+            left: 0;
+        }
+        &#rtt {
+            top: $hexagon_medium_height * 1.25 + $hexagon_distance;
+            left: $hexagon_medium_width * 2.15 + 2.5 * $hexagon_distance;
+        }
+        &#gtt {
+            top: $hexagon_medium_height * 1.75 + 2.5 * $hexagon_distance;
+            left: $hexagon_medium_width * 0.43;
+        }
+        &#ut {
+            top: $hexagon_medium_height * 2 + 2.5 * $hexagon_distance;
+            left: $hexagon_medium_width * 1.29 + 1.5 * $hexagon_distance;
+        }
+        &#symbol {
+            top: $hexagon_medium_height * .5;
+            left: $hexagon_medium_width * 2.58 + 3 * $hexagon_distance;
+        }
+        &#eshuis {
+            top: $hexagon_medium_height * 2 + 2.5 * $hexagon_distance;
+            left: $hexagon_medium_width * 2.15 + 3 * $hexagon_distance;
+        }
+    }
+}
