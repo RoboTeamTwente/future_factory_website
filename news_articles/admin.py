@@ -6,8 +6,9 @@ from .models import *
 
 
 class NewsArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'visible')
+    list_display = ('title', 'date', 'visible')
     actions = ['hide_events', 'show_events']
+    ordering = ['-date']
 
     @admin.action(description="Mark the selected news articles as hidden")
     def hide_events(self, request, queryset):

@@ -2,5 +2,10 @@ from django.contrib import admin
 
 from events.models import Event
 
-# Register your models here.
-admin.site.register(Event)
+
+class EventModelAdmin(admin.ModelAdmin):
+    ordering = ['-date']
+    list_display = ('title', 'date', 'visible')
+
+
+admin.site.register(Event, EventModelAdmin)
