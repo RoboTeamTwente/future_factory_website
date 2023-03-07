@@ -10,7 +10,10 @@ def compress(image, quality=60):
     :param image   The image to be compressed
     :param quality The quality of the resulting image
     """
-    img = Image.open(image)
+    try:
+        img = Image.open(image)
+    except FileNotFoundError:
+        return image
     img_io = BytesIO()
     if '.png' not in image.name.lower():
         img.save(img_io, format='JPEG', quality=quality)
