@@ -142,6 +142,7 @@ QUILL_CONFIGS = {
                 ['bold', 'italic', 'underline', 'strike'],
                 [{'header': 3}, {'header': 4}],
                 [{'list': 'ordered'}, {'list': 'bullet'}],
+                ['link']
             ]
         }
     }
