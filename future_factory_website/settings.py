@@ -23,14 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get('DEBUG').lower() == "true" else False
+DEBUG = True if os.environ.get('DEBUG') and os.environ.get('DEBUG').lower() == "true" else False
+BETA = True if os.environ.get('BETA') and os.environ.get('BETA').lower() == "true" else False
 
 # Checks done by NGINX
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl']
+CSRF_TRUSTED_ORIGINS = ['https://futurefactorytwente.nl', 'https://beta.futurefactorytwente.nl']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_quill',
+    'colorfield',
     'teams.apps.TeamsConfig',
     'main_site.apps.MainSiteConfig',
     'partners.apps.PartnersConfig',
+    'news_articles.apps.NewsArticlesConfig',
     'events.apps.EventsConfig',
+    'facts.apps.FactsConfig',
 ]
 
 MIDDLEWARE = [
@@ -95,7 +98,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = DATABASES['debug'] if DEBUG else DATABASES['production']
+DATABASES['default'] = DATABASES['debug'] if (DEBUG or BETA) else DATABASES['production']
 
 
 # Password validation
@@ -126,7 +129,7 @@ TIME_ZONE = 'Europe/Amsterdam'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Quill configuration (rich text editor)
@@ -139,6 +142,7 @@ QUILL_CONFIGS = {
                 ['bold', 'italic', 'underline', 'strike'],
                 [{'header': 3}, {'header': 4}],
                 [{'list': 'ordered'}, {'list': 'bullet'}],
+                ['link']
             ]
         }
     }
@@ -150,15 +154,29 @@ QUILL_CONFIGS = {
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static/public_html/dist",
 ]
-STATIC_ROOT = '/var/www/future_factory/static'
+
+if BETA:
+    STATIC_ROOT = '/var/www/future_factory_beta/static'
+else:
+    STATIC_ROOT = '/var/www/future_factory/static'
 
 # Media files
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media" if DEBUG else '/var/www/future_factory/media'
+
+if DEBUG:
+    MEDIA_ROOT = BASE_DIR / "media"
+elif BETA:
+    MEDIA_ROOT = '/var/www/future_factory_beta/media'
+else:
+    MEDIA_ROOT = '/var/www/future_factory/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

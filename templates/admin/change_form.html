@@ -1,5 +1,7 @@
 {% extends "admin/change_form.html" %}
 {% load static %}
 {% block extrastyle %}
-    {{ block.super }}<link rel="stylesheet" href="{% static "assets/css/quill.css" %}">
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/quill.css" %}">
+    <link rel="stylesheet" href="{% static "vendors/themify-icons/css/themify-icons.css" %}">
 {% endblock extrastyle %}

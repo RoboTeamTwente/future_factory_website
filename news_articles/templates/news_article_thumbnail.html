@@ -1,0 +1,15 @@
+<div class="col-md-4">
+    <div class="card blog-post my-4 my-sm-5 my-md-0">
+        {% if news_article.image %}
+            <img src="{{ news_article.image.url }}" alt="{{ news_article.title }}">
+        {% endif %}
+        <div class="card-body">
+            <div class="details mb-3">
+                <i class="ti-calendar"></i> {{ news_article.date }}
+            </div>
+            <h5 class="card-title">{{ news_article.title}}</h5>
+            <p>{{ news_article.summary }}</p>
+            <a href="{{ news_article.get_absolute_url }}" class="d-block mt-3">Read More...</a>
+        </div>
+    </div>
+</div>

@@ -1,30 +1,11 @@
-from gettext import ngettext
+from django.contrib import admin
 
-from django.contrib import admin, messages
-
-from .models import *
+from events.models import Event
 
 
-class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'visible')
-    actions = ['hide_events', 'show_events']
+class EventModelAdmin(admin.ModelAdmin):
+    ordering = ['-date']
+    list_display = ('title', 'date', 'visible')
 
-    @admin.action(description="Mark the selected events as hidden")
-    def hide_events(self, request, queryset):
-        updated = queryset.update(visible=False)
-        self.message_user(request, ngettext(
-            '%d event is successfully marked as hidden.',
-            '%d events are successfully marked as hidden.',
-            updated
-        ) % updated, messages.SUCCESS)
 
-    @admin.action(description="Mark the selected events as visible")
-    def show_events(self, request, queryset):
-        updated = queryset.update(visible=True)
-        self.message_user(request, ngettext(
-            '%d event is successfully marked as visible.',
-            '%d events are successfully marked as visible.',
-            updated
-        ) % updated, messages.SUCCESS)
-
-admin.site.register(Event, EventAdmin)
+admin.site.register(Event, EventModelAdmin)

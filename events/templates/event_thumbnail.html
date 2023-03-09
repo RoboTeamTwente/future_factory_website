@@ -1,0 +1,14 @@
+<div class="testimonial-wrapper">
+    {% if event.image %}
+        <div class="img-holder">
+            <img src="{{ event.image.url }}" alt="{{ event.title }}">
+        </div>
+    {% endif %}
+    <div class="body">
+        <h6 class="title">{{ event.title }}</h6>
+        <h6><i class="ti-calendar"></i> {{ event.date.date }} <i class="ti-time"></i> {{ event.date.time }}</h6>
+        <h6><i class="ti-location-pin"></i> {{ event.location }}</h6>
+        <p>{{ event.summary }}</p>
+        <a href="{{ event.get_absolute_url }}" class="d-block mt-3">Read More...</a>
+    </div>
+</div>

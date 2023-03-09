@@ -1,83 +1,269 @@
 {% extends "basis.html" %}
 {% load static %}
 
-{% block title %}Future Factory Twente{% endblock title %}
+{# The title of the current page #}
+{% block title %}Future Factory Twente{% endblock %}
 
-{% block banner %}
-<section id="banner" style="background-image: url('{% static "images/stockpres.jpg" %}')">
-    <header>
-    </header>
-</section>
-{% endblock banner %}
+{# The description of the page that will be shown in search results on Google #}
+{% block description %}The Future Factory houses five innovative student teams from Twente. Where they work together on five amazing projects.{% endblock %}
 
+{% block head %}
+    <style>
+        .header {
+            background-image: url({% static "imgs/header3.jpg" %});
+        }
+        section.has-bg-img.bg-img-2::after {
+            background-image: url({% static "imgs/header2.png" %});
+        }
+    </style>
+{% endblock %}
+
+{# Additional items that should be added to the navigation bar (Home is always present) #}
+{% block nav_bar %}
+    <li class="nav-item">
+        <a class="nav-link" href="#about">About</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#teams">Teams</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#events">Events</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#news">News</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#partners">Partners</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/press">Press</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#contact">Contact</a>
+    </li>
+{% endblock %}
+
+{# The content of this page. This includes everything, expect for the navigation bar and footer. #}
 {% block content %}
-<!-- Highlights -->
-<section class="wrapper style1" style="padding-bottom: 0px;">
-    <div class="container">
-        <div class="row gtr-200">
-            <section class="col-4 col-12-narrower">
-                <div class="box highlight">
-                    <i class="icon solid major fa-lightbulb"></i>
-                    <h3>Inspiration</h3>
-                    <p>We aim to inspire a new generation with the fields of technologies that we innovate in.</p>
-                </div>
-            </section>
-            <section class="col-4 col-12-narrower">
-                <div class="box highlight">
-                    <i class="icon solid major fa-wrench"></i>
-                    <h3>Innovation</h3>
-                    <p>We aim to innovate in renewable energy, robotics, artificial intelligence and the drone industry.</p>
-                </div>
-            </section>
-            <section class="col-4 col-12-narrower">
-                <div class="box highlight">
-                    <i class="icon solid major fa-handshake"></i>
-                    <h3>Collaboration</h3>
-                    <p>Having mutual goals, stimulates collaboration in all areas of the teams</p>
-                </div>
-            </section>
+
+    {# The nice header showing typing text and a fancy background #}
+    <header class="header">
+        <div class="overlay">
+            <h6 class="subtitle">Student Teams Twente</h6>
+            <h1 class="title">Future <span id="landing_text"></span></h1>
+            <div class="buttons text-center">
+                <a href="#teams" class="btn btn-primary rounded w-lg btn-lg my-1">The teams</a>
+                <a href="#events" class="btn btn-outline-light rounded w-lg btn-lg my-1">Events</a>
+            </div>
+        </div>
+    </header>
+
+    {# The core pillars of the Future Factory #}
+    <div class="box text-center">
+        <div class="box-item">
+            <i class="ti-light-bulb"></i>
+            <h6 class="box-title">Inspiration</h6>
+            <p>We aim to inspire a new generation with the fields of technologies that we innovate in.</p>
+        </div>
+        <div class="box-item">
+            <i class="ti-rocket"></i>
+            <h6 class="box-title">Innovation</h6>
+            <p>We aim to innovate in renewable energy, robotics, artificial intelligence and the drone industry.</p>
+        </div>
+        <div class="box-item">
+            <i class="ti-thought"></i>
+            <h6 class="box-title">Collaboration</h6>
+            <p>Having mutual goals, stimulates collaboration in all areas of the teams.</p>
         </div>
     </div>
-</section>
 
-<!-- Gigantic Heading -->
-<section>
-    <div class="container">
-        <header class="major">
-            <h2>Building the next
-                <span data-type='["bike", "boat", "car", "drone", "robot"]' data-colors='["#f40000", "#1f2a44",
-                "#7CDA24", "#0063ad", "#5A1C74"]' class="typewriter"></span>
-            </h2>
-            <p>At the Future Factory, five student teams from Twente are housed together. Collaborating on five amazing projects</p>
-        </header>
-    </div>
-</section>
+    {# A general description about what the FF does and what we stand for #}
+    <section id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 col-lg-4">
+                    <img src="{% static "imgs/team-managers.jpg" %}" alt="Team managers picture" class="w-100 img-thumbnail mb-3">
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h6 class="section-subtitle mb-0">We stand for</h6>
+                    <h6 class="section-title mb-3">Innovation &amp; Inspiration</h6>
+                    <p>The Future Factory houses five innovative student teams from the University of Twente and Saxion University of Applied Sciences.</p>
+                    <p>From the many disciplines that both institutions offer, the students work together towards a better future.</p>
+                    <p>We envision this future with renewable energy sources, efficient storage of new technology and artificial intelligence.
+                        We aim to inspire people to keep innovating by organizing company visits and workshops.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Posts -->
-<section class="wrapper style1" style="padding-top: 0px;">
-    <div class="container">
-    <h2> News and events </h2>
-        <div class="row">
-            {% for event in events %}
-            <section class="col-6 col-12-narrower">
-                <div class="box post">
-                    {% if event.image %}
-                    <a href="{{ event.get_absolute_url }}" class="image left">
-                        <img src="{{ event.image.url }}" alt="{{ event.title }}">
-                    </a>
+    {# All the teams #}
+    {# It is important that each team's picture is square, otherwise the hexagon will look wonky #}
+    <section id="teams">
+        <div class="container text-center">
+            <h6 class="section-subtitle">Introducing</h6>
+            <h6 class="section-title mb-5">Our Teams</h6>
+            <div class="row">
+                {% for team in teams %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                        {% include "team_thumbnail.html" with team=team only %}
                     {% endif %}
-                    <div{% if event.image %} class="inner"{% endif %}>
-                        <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
-                        <p>{{ event.summary }}</p>
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center mt-sm-n5">
+                {% for team in teams %}
+                    {% if not forloop.counter0|divisibleby:2 %}
+                        {% include "team_thumbnail.html" with team=team only %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {# Some facts that look impressive #}
+    {# TODO: Since these would potentially be updated each year, perhaps create a database model for these #}
+    <section class="has-bg-img bg-img-2">
+        <div class="container text-center">
+            <h6 class="section-title mb-6">Future Factory in numbers</h6>
+            <div class="widget-2 justify-content-center">
+                <div class="widget-item">
+                    <i class="ti-user"></i>
+                    <h6 class="title">100+</h6>
+                    <div class="subtitle">Current members</div>
+                </div>
+                <div class="widget-item">
+                    <i class="ti-medall-alt"></i>
+                    <h6 class="title">600+</h6>
+                    <div class="subtitle">Alumni</div>
+                </div>
+                <div class="widget-item">
+                    <i class="ti-ruler-pencil"></i>
+                    <h6 class="title">5</h6>
+                    <div class="subtitle">Projects</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# All the upcoming events, limited to the first four #}
+    <section id="events">
+        <div class="container">
+            <h6 class="section-subtitle text-center">Upcoming</h6>
+            <h6 class="section-title text-center mb-6">Events</h6>
+            <div class="row">
+                {% if events|length_is:0 %}
+                    <p>At this moment, there are not any upcoming events.</p>
+                {% endif %}
+                <div class="col-md-6">
+                    {% for event in events %}
+                        {% if forloop.counter0|divisibleby:2 %}
+                            {% include "event_thumbnail.html" with event=event only %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-md-6">
+                    {% for event in events %}
+                        {% if not forloop.counter0|divisibleby:2 %}
+                            {% include "event_thumbnail.html" with event=event only %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# The three latest news articles #}
+    <section id="news">
+        <div class="container">
+            <h6 class="section-subtitle text-center">Fresh of the press</h6>
+            <h6 class="section-title mb-6 text-center">News Articles</h6>
+
+            <div class="row">
+                {% for news_article in news_articles %}
+                    {% include "news_article_thumbnail.html" with news_article=news_article only %}
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center mt-3">
+                <a href="/news" class="btn btn-primary">More news</a>
+            </div>
+        </div>
+    </section>
+
+    {# A small section dedicated to our partners #}
+    {# TODO: It would be nice that when someone hovers over the partners, that they can go to their website #}
+    <section id="partners">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <img src="{% static "imgs/wall-of-fame.png" %}" alt="Wall of Fame" class="w-100 mb-0">
+                </div>
+                <div class="col-md-4">
+                    <h6 class="section-subtitle mb-0">We are proud of</h6>
+                    <h6 class="section-title mb-3">Our Partners</h6>
+                    <p>We do not only share knowledge between the teams in the future factory. We also have partnerships with several companies. With their support we hope to be able to inspire even more people. By sharing knowledge with our partners we hope to be able to innovate in new ways.</p>
+                    <p>We are proud of our partners, and therefore they get a special place on our site and on a wall in the Future Factory! If you are interested in the possibilities of a partnership with Future Factory Twente as well and want to know more about what we could offer you feel free to get in touch!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# The contact form, allowing people to send a message. These can be read in the back-end #}
+    <section id="contact">
+        <div class="container">
+            <div class="contact-card">
+                <div class="infos">
+                    <h6 class="section-subtitle">Visit us</h6>
+                    <h6 class="section-title mb-4">Get In Touch</h6>
+
+                    <div class="item">
+                        <i class="ti-location-pin"></i>
+                        <div class="">
+                            <h5>Location</h5>
+                            <p>Capitool 25, 7521PL, Enschede</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="ti-email"></i>
+                        <div class="mb-0">
+                            <h5>Email Address</h5>
+                            <p>info@futurefactorytwente.nl</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="ti-world"></i>
+                        <div class="mb-0">
+                            <h5>Website</h5>
+                            <p>futurefactorytwente.nl</p>
+                        </div>
                     </div>
                 </div>
-            </section>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endblock content %}
 
+                <div class="form">
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}alert-warning{% else %}alert-success{% endif %} alert-dismissible fade show" role="alert">
+                             {{ message }}
+                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                             </button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    <h6 class="section-title mb-4">Send a Message</h6>
+                    <form method="post" action="/send_email/">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ contact_form.sender_mail }}
+                        </div>
+                            {{ contact_form.message }}
+                        <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{# Any additional scripts to make this page work. Most will however already be included in the minimized JavaScript file #}
 {% block scripts %}
-    <script src="{% static "assets/js/typewriter.js" %}"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 {% endblock %}

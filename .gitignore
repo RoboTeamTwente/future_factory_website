@@ -1,3 +1,12 @@
 .idea
+
+# The database should remain local and is not sqlite on production
 /db.sqlite3
+
+# No need to commit any locally uploaded media
 /media/
+
+# Leave out any generated files
+/static/node_modules/
+/static/package-lock.json
+/static/public_html/dist/
