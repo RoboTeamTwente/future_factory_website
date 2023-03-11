@@ -1,8 +1,31 @@
 #partner-hexagons {
-  width: 620.5px;
-  height: 606px;
+  --hexagon_small_height: calc(var(--hexagon_small_width) * .87);
+  --hexagon_medium_width: calc(var(--hexagon_small_width) * 1.75 + var(--hexagon_margin));
+  --hexagon_medium_height: calc(var(--hexagon_small_height) * 2 + var(--hexagon_margin));
+  --hexagon_big_width: calc(var(--hexagon_small_width) * 2.5 + var(--hexagon_margin) * 1.5);
+  --hexagon_big_height: calc(var(--hexagon_small_height) * 3 + var(--hexagon_margin) * 1.5);
+  width: calc(var(--hexagon_medium_width) * 4);
+  height: calc(var(--hexagon_small_height) * 6 + 3 * var(--hexagon_margin));
   position: relative;
   display: block;
+}
+@media (min-width: 992px) {
+  #partner-hexagons {
+    --hexagon_margin: 4px;
+    --hexagon_small_width: 100px;
+  }
+}
+@media (max-width: 1199.98px) {
+  #partner-hexagons {
+    --hexagon_margin: 3px;
+    --hexagon_small_width: 75px;
+  }
+}
+@media (max-width: 991.98px) {
+  #partner-hexagons {
+    --hexagon_margin: 2px;
+    --hexagon_small_width: 50px;
+  }
 }
 #partner-hexagons .hexagon {
   position: absolute;
@@ -20,23 +43,26 @@
           align-items: center;
   z-index: 5;
   background-color: white;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
 }
 #partner-hexagons .hexagon img {
   width: 90%;
 }
 #partner-hexagons .hexagon:hover {
-  -webkit-filter: opacity(80%);
-          filter: opacity(80%);
+  -webkit-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+          transform: scale(0.9);
 }
 #partner-hexagons .hexagon.big {
-  width: 250px;
-  height: 300px;
+  width: var(--hexagon_big_width);
+  height: var(--hexagon_big_height);
   -webkit-clip-path: polygon(0% 67%, 10% 84%, 30% 84%, 40% 100%, 60% 100%, 70% 84%, 90% 84%, 100% 67%, 90% 50%, 100% 33%, 90% 17%, 70% 17%, 60% 0%, 40% 0%, 30% 17%, 10% 17%, 0% 33%, 10% 50%);
           clip-path: polygon(0% 67%, 10% 84%, 30% 84%, 40% 100%, 60% 100%, 70% 84%, 90% 84%, 100% 67%, 90% 50%, 100% 33%, 90% 17%, 70% 17%, 60% 0%, 40% 0%, 30% 17%, 10% 17%, 0% 33%, 10% 50%);
 }
 #partner-hexagons .hexagon.medium {
-  width: 175px;
-  height: 200px;
+  width: var(--hexagon_medium_width);
+  height: var(--hexagon_medium_height);
 }
 #partner-hexagons .hexagon.medium.left {
   -webkit-clip-path: polygon(0% 50%, 14% 75%, 43% 75%, 57% 100%, 86% 100%, 100% 75%, 86% 50%, 100% 75%, 86% 50%, 100% 25%, 86% 0%, 57% 0%, 43% 25%, 14% 25%);
@@ -59,8 +85,8 @@
   margin-left: 5%;
 }
 #partner-hexagons .hexagon.small {
-  width: 100px;
-  height: 100px;
+  width: var(--hexagon_small_width);
+  height: var(--hexagon_small_height);
   -webkit-clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
           clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
 }
@@ -68,39 +94,38 @@
   width: 80%;
 }
 #partner-hexagons .hexagon#ff {
-  left: 152.5px;
-  top: 152px;
-  z-index: 1;
+  left: calc(var(--hexagon_medium_width) * 0.86 + var(--hexagon_margin));
+  top: calc(var(--hexagon_medium_height) * 0.75 + var(--hexagon_margin));
 }
 #partner-hexagons .hexagon#est {
-  left: 151.5px;
+  left: calc(var(--hexagon_medium_width) * 0.86 + 0.5 * var(--hexagon_margin));
   top: 0;
 }
 #partner-hexagons .hexagon#sbt {
-  left: 305px;
-  top: 50px;
+  left: calc(var(--hexagon_medium_width) * 1.72 + 2 * var(--hexagon_margin));
+  top: calc(var(--hexagon_medium_height) * 0.25);
 }
 #partner-hexagons .hexagon#dtt {
-  top: 152px;
+  top: calc(var(--hexagon_medium_height) * 0.75 + var(--hexagon_margin));
   left: 0;
 }
 #partner-hexagons .hexagon#rtt {
-  top: 252px;
-  left: 381.25px;
+  top: calc(var(--hexagon_medium_height) * 1.25 + var(--hexagon_margin));
+  left: calc(var(--hexagon_medium_width) * 2.15 + 2.5 * var(--hexagon_margin));
 }
 #partner-hexagons .hexagon#gtt {
-  top: 355px;
-  left: 75.25px;
+  top: calc(var(--hexagon_medium_height) * 1.75 + 2.5 * var(--hexagon_margin));
+  left: calc(var(--hexagon_medium_width) * 0.43);
 }
 #partner-hexagons .hexagon#ut {
-  top: 405px;
-  left: 228.75px;
+  top: calc(var(--hexagon_medium_height) * 2 + 2.5 * var(--hexagon_margin));
+  left: calc(var(--hexagon_medium_width) * 1.29 + 1.5 * var(--hexagon_margin));
 }
 #partner-hexagons .hexagon#symbol {
-  top: 100px;
-  left: 457.5px;
+  top: calc(var(--hexagon_medium_height) * 0.5);
+  left: calc(var(--hexagon_medium_width) * 2.58 + 3 * var(--hexagon_margin));
 }
 #partner-hexagons .hexagon#eshuis {
-  top: 405px;
-  left: 382.25px;
+  top: calc(var(--hexagon_medium_height) * 2 + 2.5 * var(--hexagon_margin));
+  left: calc(var(--hexagon_medium_width) * 2.15 + 3 * var(--hexagon_margin));
 }
