@@ -1,0 +1,146 @@
+// Core
+@import "vendors/bootstrap-4.3.1/functions";
+
+// custom variables
+@import "abstracts/variables";
+// bootstrap variables
+@import "vendors/bootstrap-4.3.1/variables";
+@import "vendors/bootstrap-4.3.1/mixins";
+
+$hexagon_small_width: 50px;
+$hexagon_small_height: $hexagon_small_width;
+
+$hexagon_medium_height: $hexagon_small_height * 2;
+$hexagon_medium_width: $hexagon_small_width * 1.75;
+
+$hexagon_big_height: $hexagon_small_height * 3;
+$hexagon_big_width: $hexagon_small_width * 2.5;
+
+$hexagon_distance: 2px;
+
+#partner-hexagons {
+    // Variables
+    @include media-breakpoint-up(lg) {
+        --hexagon_margin: 4px;
+        --hexagon_small_width: 100px;
+    }
+    @include media-breakpoint-down(lg) {
+        --hexagon_margin: 3px;
+        --hexagon_small_width: 75px;
+    }
+    @include media-breakpoint-down(md) {
+        --hexagon_margin: 2px;
+        --hexagon_small_width: 50px;
+    }
+
+    --hexagon_small_height: calc(var(--hexagon_small_width) * .87);
+
+    --hexagon_medium_width: calc(var(--hexagon_small_width) * 1.75 + var(--hexagon_margin));
+    --hexagon_medium_height: calc(var(--hexagon_small_height) * 2 + var(--hexagon_margin));
+
+    --hexagon_big_width: calc(var(--hexagon_small_width) * 2.5 + var(--hexagon_margin) * 1.5);
+    --hexagon_big_height: calc(var(--hexagon_small_height) * 3 + var(--hexagon_margin) * 1.5);
+
+    width: calc(var(--hexagon_medium_width) * 4);
+    height: calc(var(--hexagon_small_height) * 6 + 3 * var(--hexagon_margin));
+    position: relative;
+    display: block;
+
+    .hexagon {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+        background-color: white;
+        transition-duration: 0.5s;
+
+        img {
+            width: 90%;
+        }
+
+        &:hover {
+            transform: scale(0.9);
+        }
+
+        // Different sizes of hexagons
+        &.big {
+            width: var(--hexagon_big_width); //$hexagon_big_width;
+            height: var(--hexagon_big_height); //$hexagon_big_height;
+            clip-path: polygon(0% 67%, 10% 84%, 30% 84%, 40% 100%, 60% 100%, 70% 84%, 90% 84%, 100% 67%, 90% 50%, 100% 33%, 90% 17%, 70% 17%, 60% 0%, 40% 0%, 30% 17%, 10% 17%, 0% 33%, 10% 50%);
+        }
+        &.medium {
+            width: var(--hexagon_medium_width); //$hexagon_medium_width;
+            height: var(--hexagon_medium_height); //$hexagon_medium_height;
+
+            &.left {
+                clip-path: polygon(0% 50%, 14% 75%, 43% 75%, 57% 100%, 86% 100%, 100% 75%, 86% 50%, 100% 75%, 86% 50%, 100% 25%, 86% 0%, 57% 0%, 43% 25%, 14% 25%);
+                margin-right: -14%;
+
+                img {
+                    margin-right: 5%;
+                }
+            }
+
+            &.right {
+                clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+                margin-right: -14%;
+
+                .hexagon-content {
+                    clip-path: polygon(0% 75%, 14% 100%, 43% 100%, 57% 75%, 86% 75%, 100% 50%, 86% 25%, 57% 25%, 43% 0%, 14% 0%, 0% 25%, 14% 50%);
+                }
+
+                img {
+                    margin-left: 5%;
+                }
+            }
+        }
+        &.small {
+            width: var(--hexagon_small_width); //$hexagon_small_width;
+            height: var(--hexagon_small_height); //$hexagon_small_height;
+            clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0%, 25% 0%);
+
+            img {
+                width: 80%;
+            }
+        }
+
+        // Positioning of each hexagon
+        &#ff {
+            left: calc(var(--hexagon_medium_width) * .86 + var(--hexagon_margin));
+            top: calc(var(--hexagon_medium_height) * .75 + var(--hexagon_margin));
+        }
+        &#est {
+            left: calc(var(--hexagon_medium_width) * .86 + .5 * var(--hexagon_margin));
+            top: 0;
+        }
+        &#sbt {
+            left: calc(var(--hexagon_medium_width) * 1.72 + 2 * var(--hexagon_margin));
+            top: calc(var(--hexagon_medium_height) * .25);
+        }
+        &#dtt {
+            top: calc(var(--hexagon_medium_height) * .75 + var(--hexagon_margin));
+            left: 0;
+        }
+        &#rtt {
+            top: calc(var(--hexagon_medium_height) * 1.25 + var(--hexagon_margin));
+            left: calc(var(--hexagon_medium_width) * 2.15 + 2.5 * var(--hexagon_margin));
+        }
+        &#gtt {
+            top: calc(var(--hexagon_medium_height) * 1.75 + 2.5 * var(--hexagon_margin));
+            left: calc(var(--hexagon_medium_width) * 0.43);
+        }
+        &#ut {
+            top: calc(var(--hexagon_medium_height) * 2 + 2.5 * var(--hexagon_margin));
+            left: calc(var(--hexagon_medium_width) * 1.29 + 1.5 * var(--hexagon_margin));
+        }
+        &#symbol {
+            top: calc(var(--hexagon_medium_height) * .5);
+            left: calc(var(--hexagon_medium_width) * 2.58 + 3 * var(--hexagon_margin));
+        }
+        &#eshuis {
+            top: calc(var(--hexagon_medium_height) * 2 + 2.5 * var(--hexagon_margin));
+            left: calc(var(--hexagon_medium_width) * 2.15 + 3 * var(--hexagon_margin));
+        }
+    }
+}
