@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'colorfield',
     'teams.apps.TeamsConfig',
     'main_site.apps.MainSiteConfig',
-    'partners.apps.PartnersConfig',
     'news_articles.apps.NewsArticlesConfig',
     'events.apps.EventsConfig',
     'facts.apps.FactsConfig',

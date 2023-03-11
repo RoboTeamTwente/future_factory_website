@@ -1,9 +1,9 @@
 # Future Factory Website Documentation
 Over here you can find the documentation for the Future Factory website.
 
-The website is written in Python using the [Django](https://www.djangoproject.com/) framework. At the moment RoboTeam 
-Twente is the lead maintainer on this website and is also responsible for hosting it. However, this should not discourage
-other people from wanting to help and work on this site. 
+The website is written in Python using the [Django](https://www.djangoproject.com/) framework. At the moment 
+[Tom Meulenkamp](https://github.com/supertom01/) from RoboTeam Twente is the lead maintainer on this website and is also 
+responsible for hosting it. However, this should not discourage other people from wanting to help and work on this site. 
 
 The code structure attempts to make it easy to search through and is written in a way that should not be too complex for
 someone with some experience with the Django framework. 
@@ -12,9 +12,13 @@ Although the code has some documentation incorporated into it, this documentatio
 allowing one to understand on how all of these components work together.
 
 ## Table of Contents
-* [Teams](teams.md)
+For each Django [app](https://docs.djangoproject.com/en/4.1/ref/applications/) a page is available, additionally on this
+page you will be able to find more general information
+
 * [Events](events.md)
-* [Partners](partners.md)
+* [Teams](teams.md)
+* [Facts](facts.md)
+* [News Articles](news_articles.md)
 * [Contact](contact.md)
 * [Settings](settings.md)
 
