@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 
 from events.models import Event
 from future_factory_website.forms import ContactForm
-from main_site.models import Email, PressPicture
+from main_site.models import PressPicture
 from news_articles.models import NewsArticle
 from teams.models import Team
 
@@ -64,9 +64,6 @@ class SendMessage(View):
                 mail_admins(subject="[Contact Form] Failed sending email", message=str(e))
             except BadHeaderError:
                 messages.error(request, message="Your email seems to be malformed, please try again.")
-            # Email.objects.create(email_sender=contact_form.cleaned_data['sender_mail'],
-            #                      recipient=self.team,
-            #                      message=contact_form.cleaned_data['message'])
         else:
             for field in contact_form.errors:
                 messages.error(request, message=contact_form.errors.get_json_data()[field][0]['message'])
