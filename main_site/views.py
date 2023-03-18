@@ -1,6 +1,8 @@
 import datetime
+from smtplib import SMTPException
 
 from django.contrib import messages
+from django.core.mail import send_mail, BadHeaderError, mail_admins
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views import View
@@ -8,7 +10,7 @@ from django.views.generic import TemplateView
 
 from events.models import Event
 from future_factory_website.forms import ContactForm
-from main_site.models import Email, PressPicture
+from main_site.models import PressPicture
 from news_articles.models import NewsArticle
 from teams.models import Team
 
@@ -50,10 +52,18 @@ class SendMessage(View):
         contact_form = ContactForm(request.POST)
 
         if contact_form.is_valid():
-            Email.objects.create(email_sender=contact_form.cleaned_data['sender_mail'],
-                                 recipient=self.team,
-                                 message=contact_form.cleaned_data['message'])
-            messages.success(request, message="Your email was successfully send")
+            message = f"You got a new message from the Future Factory website!\n\nFrom: {contact_form.cleaned_data['sender_mail']}\n\nMessage: {contact_form.cleaned_data['message']}"
+            try:
+                send_mail(subject="[Future Factory Website] General contact form",
+                          from_email='noreply@roboteamtwente.nl',
+                          recipient_list=[self.team.contact_mail if self.team else 'info@futurefactorytwente.nl'],
+                          message=message)
+                messages.success(request, message="Your email was successfully send")
+            except SMTPException as e:
+                messages.error(request, message="The server cannot send your email. Please try again later.")
+                mail_admins(subject="[Contact Form] Failed sending email", message=str(e))
+            except BadHeaderError:
+                messages.error(request, message="Your email seems to be malformed, please try again.")
         else:
             for field in contact_form.errors:
                 messages.error(request, message=contact_form.errors.get_json_data()[field][0]['message'])
