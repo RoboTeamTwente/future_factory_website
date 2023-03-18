@@ -16,8 +16,6 @@ allowing one to understand on how all of these components work together.
 * [Facts](facts.md)
 * [News Articles](news_articles.md)
 * [Partners](partners.md)
-
-<!-- Go further with updating each document from here. -->
 * [Teams](teams.md)
 * [Contact](contact.md)
 * [Settings](settings.md)
@@ -28,8 +26,7 @@ Most entities have their own module (also known as [app](https://docs.djangoproj
 within this project. This allows for a clear distribution between models, views and other stuff. 
 
 ### Class Diagram
-**TODO: Update the class diagram**
-![Class Diagram](images/classdiagram.png)
+![Class Diagram](images/classdiagram.jpg)
 
 ### Templates
 Each page that one sees is built with the Django [template](https://docs.djangoproject.com/en/4.1/ref/templates/) system.
