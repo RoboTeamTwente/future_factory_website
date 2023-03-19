@@ -59,10 +59,10 @@
                                 Our logo uniquely identifies our projects and the individual teams. It is inspired by each
                                 team's color palette.
                             </p>
-                            <a target="_blank" href="{% static "imgs/high_quality_logo.png" %}">
+                            <a target="_blank" href="" download="{% static "imgs/high_quality_logo.png" %}">
                                 <div class="btn btn-primary">PNG</div>
                             </a>
-                            <a target="_blank" href="{% static "imgs/high_quality_logo.svg" %}">
+                            <a target="_blank" href="" download="{% static "imgs/high_quality_logo.svg" %}">
                                 <div class="btn btn-primary">SVG</div>
                             </a>
                         </div>
@@ -71,10 +71,10 @@
                             <p>
                                 Our partners help us with our projects, and together we work towards a better future.
                             </p>
-                            <a download="{% static "imgs/high_quality_wall_of_fame.png" %}" target="_blank">
+                            <a href="" download="{% static "imgs/high_quality_wall_of_fame.png" %}" target="_blank">
                                 <span class="btn btn-primary">PNG</span>
                             </a>
-                            <a download="{% static "imgs/high_quality_wall_of_fame.svg" %}" target="_blank">
+                            <a href="" download="{% static "imgs/high_quality_wall_of_fame.svg" %}" target="_blank">
                                 <span class="btn btn-primary">SVG</span>
                             </a>
                         </div>
@@ -88,7 +88,7 @@
                         <div class="row mb-4">
                         {% endif %}
                         <div class="col">
-                            <a href="{{ picture.picture.url }}" target="_blank" title="Open high quality version">
+                            <a href="" download="{{ picture.picture.url }}" target="_blank" title="Download high quality version">
                                 <img src="{{ picture.thumbnail.url }}" alt="{{ picture.picture.name }}" class="img-thumbnail w-100">
                             </a>
                         </div>
@@ -104,11 +104,11 @@
                         <h4 style="color: {{ team.main_color }};" class="mt-4">{{ team.name }}</h4>
                         <img src="{{ team.logo.url }}" alt="{{ team.name }} logo" class="w-100">
                         <p>Download as</p>
-                        <a target="_blank" href="{{ team.logo.url }}">
+                        <a target="_blank" href="" download="{{ team.logo.url }}">
                             <span class="btn btn-primary" style="background-color: {{ team.main_color }}; border-color: {{ team.main_color }}">PNG</span>
                         </a>
                         {% if team.logo_svg %}
-                        <a target="_blank" href="{{ team.logo_svg.url }}">
+                        <a target="_blank" href="" download="{{ team.logo_svg.url }}">
                             <span class="btn btn-primary" style="background-color: {{ team.main_color }}; border-color: {{ team.main_color }}">SVG</span>
                         </a>
                         {% endif %}
