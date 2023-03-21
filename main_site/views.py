@@ -25,7 +25,7 @@ class MainView(TemplateView):
         context['teams'] = Team.objects.order_by('name').all()
 
         # Show only the latest four, still visible events.
-        context['events'] = Event.objects.filter(visible=True, date__gte=datetime.datetime.now()).order_by('-date')[:4].all()
+        context['events'] = Event.objects.filter(visible=True, date__gte=datetime.datetime.now()).order_by('date')[:4].all()
 
         # Show only the latest three news articles that are visible.
         context['news_articles'] = NewsArticle.objects.filter(visible=True).order_by('-date')[:3].all()
