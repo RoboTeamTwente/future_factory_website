@@ -17,6 +17,7 @@ class TeamDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(TeamDetailView, self).get_context_data(**kwargs)
         context['contact_form'] = ContactForm()
+        context['text_sections'] = self.object.sections.order_by('id').all()
         return context
 
 
