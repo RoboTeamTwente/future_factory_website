@@ -53,8 +53,10 @@
                 <img src="{{ section.image.url }}" alt="{{ section.title }}" class="w-100 img-thumbnail mb-3">
             </div>
             {% endif %}
-            <div class="col-md-7 col-lg-8">
+            <div class="{% if section.image %}col-md-7 col-lg-8{% else %}col{% endif %}">
+                {% if section.title %}
                 <h6 class="section-title mb-3">{{ section.title }}</h6>
+                {% endif %}
                 {{ section.text.html | safe }}
             </div>
             {% if not forloop.counter0|divisibleby:2 and section.image %}

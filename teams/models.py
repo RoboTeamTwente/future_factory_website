@@ -60,7 +60,7 @@ class TeamAccount(models.Model):
 
 
 class TeamTextSection(Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, null=True, blank=True)
     text = QuillField()
     image = models.ImageField(upload_to="teams", null=True, blank=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="sections")
@@ -75,7 +75,7 @@ class TeamTextSection(Model):
         return super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.team.name + " - " + self.title
+        return self.team.name + " - " + (self.title if self.title else 'section')
 
 
 class TeamFact(Fact):
