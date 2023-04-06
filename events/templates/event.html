@@ -17,9 +17,9 @@
         <div class="row">
             <div class="col">
                 {% if event.start.date == event.end.date %}
-                    <h6><i class="ti-calendar"></i> {{ object.start.date }} <i class="ti-time"></i> {{ object.start.time }} - {{ object.end.time }}</h6>
+                    <h6><i class="ti-calendar"></i> {{ event.start.date }}{% if not event.entire_day %} <i class="ti-time"></i> {{ event.start.time }} - {{ event.end.time }}{% endif %}</h6>
                 {% else %}
-                    <h6><i class="ti-calendar"></i> {{ object.start.date }} <i class="ti-time"></i> {{ object.start.time }} - <i class="ti-calendar"></i> {{ object.end.date }} <i class="ti-time"></i> {{ object.end.time }}</h6>
+                    <h6><i class="ti-calendar"></i> {{ event.start.date }}{% if not event.entire_day %} <i class="ti-time"></i> {{ event.start.time }}{% endif %} - <i class="ti-calendar"></i> {{ event.end.date }}{% if not event.entire_day %} <i class="ti-time"></i> {{ event.end.time }}{% endif %}</h6>
                 {% endif %}
             </div>
         </div>

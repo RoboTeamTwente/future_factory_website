@@ -7,9 +7,9 @@
     <div class="body">
         <h6 class="title">{{ event.title }}</h6>
         {% if event.start.date == event.end.date %}
-            <h6><i class="ti-calendar"></i> {{ event.start.date }} <i class="ti-time"></i> {{ event.start.time }} - {{ event.end.time }}</h6>
+            <h6><i class="ti-calendar"></i> {{ event.start.date }}{% if not event.entire_day %} <i class="ti-time"></i> {{ event.start.time }} - {{ event.end.time }}{% endif %}</h6>
         {% else %}
-            <h6><i class="ti-calendar"></i> {{ event.start.date }} <i class="ti-time"></i> {{ event.start.time }} - <i class="ti-calendar"></i> {{ event.end.date }} <i class="ti-time"></i> {{ event.end.time }}</h6>
+            <h6><i class="ti-calendar"></i> {{ event.start.date }}{% if not event.entire_day %} <i class="ti-time"></i> {{ event.start.time }}{% endif %} - <i class="ti-calendar"></i> {{ event.end.date }}{% if not event.entire_day %} <i class="ti-time"></i> {{ event.end.time }}{% endif %}</h6>
         {% endif %}
         <h6><i class="ti-location-pin"></i> {{ event.location }}</h6>
         <p>{{ event.summary }}</p>
