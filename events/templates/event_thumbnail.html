@@ -6,7 +6,11 @@
     {% endif %}
     <div class="body">
         <h6 class="title">{{ event.title }}</h6>
-        <h6><i class="ti-calendar"></i> {{ event.date.date }} <i class="ti-time"></i> {{ event.date.time }}</h6>
+        {% if event.start.date == event.end.date %}
+            <h6><i class="ti-calendar"></i> {{ event.start.date }} <i class="ti-time"></i> {{ event.start.time }} - {{ event.end.time }}</h6>
+        {% else %}
+            <h6><i class="ti-calendar"></i> {{ event.start.date }} <i class="ti-time"></i> {{ event.start.time }} - <i class="ti-calendar"></i> {{ event.end.date }} <i class="ti-time"></i> {{ event.end.time }}</h6>
+        {% endif %}
         <h6><i class="ti-location-pin"></i> {{ event.location }}</h6>
         <p>{{ event.summary }}</p>
         <a href="{{ event.get_absolute_url }}" class="d-block mt-3">Read More...</a>

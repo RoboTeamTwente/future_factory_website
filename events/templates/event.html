@@ -16,7 +16,11 @@
         {% endif %}
         <div class="row">
             <div class="col">
-                <i class="ti-calendar"></i> {{ object.date.date }} <i class="ti-time"></i> {{ object.date.time }}
+                {% if event.start.date == event.end.date %}
+                    <h6><i class="ti-calendar"></i> {{ object.start.date }} <i class="ti-time"></i> {{ object.start.time }} - {{ object.end.time }}</h6>
+                {% else %}
+                    <h6><i class="ti-calendar"></i> {{ object.start.date }} <i class="ti-time"></i> {{ object.start.time }} - <i class="ti-calendar"></i> {{ object.end.date }} <i class="ti-time"></i> {{ object.end.time }}</h6>
+                {% endif %}
             </div>
         </div>
         <div class="row">

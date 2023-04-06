@@ -11,7 +11,8 @@ class Event(models.Model):
     description = QuillField()
     image = models.ImageField(upload_to='events', null=True, blank=True)
     visible = models.BooleanField(default=True)
-    date = models.DateTimeField(help_text='When does this event take place?')
+    start = models.DateTimeField(help_text='When does this event start?', verbose_name='Start time')
+    end = models.DateTimeField(help_text='When does this event end?', verbose_name='End time')
     location = models.CharField(max_length=100, help_text='Where does this event take place?')
 
     class Meta:

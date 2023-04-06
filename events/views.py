@@ -7,7 +7,7 @@ class EventListView(ListView):
     model = Event
     queryset = Event.objects.filter(visible=True)
     template_name = "events.html"
-    ordering = "-date"
+    ordering = "-start"
     paginate_by = 8
 
 
