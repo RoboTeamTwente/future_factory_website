@@ -23,8 +23,13 @@
     <li class="nav-item">
         <a class="nav-link" href="#about">About</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#teams">Teams</a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Teams</a>
+        <ul class="dropdown-menu">
+            {% for team in teams %}
+            <li><a href="{{ team.get_absolute_url }}" class="dropdown-item">{{ team.name }}</a></li>
+            {% endfor %}
+        </ul>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#events">Events</a>
