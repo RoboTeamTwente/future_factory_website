@@ -1,11 +1,7 @@
-from django.contrib import messages
 from django.http import Http404
-from django.shortcuts import redirect
-from django.views import View
 from django.views.generic import DetailView
 
 from future_factory_website.forms import ContactForm
-from main_site.models import Email
 from main_site.views import SendMessage
 from teams.models import Team
 
