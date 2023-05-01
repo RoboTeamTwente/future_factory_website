@@ -19,11 +19,22 @@
                 <i class="ti-calendar"></i> {{ object.date }}
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col">
-                {{ object.description_html | safe }}
-            </div>
-        </div>
+        {% for paragraph in object.paragraphs.all %}
+            {% if paragraph.text %}
+                <div class="row mt-3">
+                    <div class="col">
+                        {{ paragraph.text_html | safe }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if paragraph.image %}
+                <div class="row mt-3">
+                    <div class="col">
+                        <img src="{{ paragraph.image.url }}" alt="" class="w-75 mx-auto d-block">
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </section>
 {% endblock content %}
