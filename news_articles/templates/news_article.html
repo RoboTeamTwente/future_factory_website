@@ -19,7 +19,7 @@
                 <i class="ti-calendar"></i> {{ object.date }}
             </div>
         </div>
-        {% for paragraph in object.paragraphs.all %}
+        {% for paragraph in object.paragraphs.all|dictsort:"id" %}
             {% if paragraph.text %}
                 <div class="row mt-3">
                     <div class="col">
