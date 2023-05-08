@@ -1,0 +1,37 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<style>
+    :root {
+        --primary: #3c3c3c;
+        --secondary: #292929;
+        --accent: #fff;
+        --primary-fg: #fff;
+        --header-color: #fff;
+        --link-fg: var(--primary);
+        --link-hover-color: var(--secondary);
+        --link-selected-fg: var(--secondary);
+        --default-button-hover-bg: var(--primary);
+        --button-hover-bg: var(--secondary);
+        font-family: 'Montserrat';
+    }
+    body {
+        font-family: 'Montserrat';
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | Future Factory Twente
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static "imgs/logo.png" %}" alt="Future Factory Twente logo" width="80px">
+    </a>
+</h1>
+{% endblock %}
