@@ -18,6 +18,15 @@ class TeamAdminView(admin.ModelAdmin):
     inlines = [TeamFactInline, TeamTextSectionInline]
     list_display = ('name', )
     exclude = ('slug', )
+    fieldsets = [
+        (None, {"fields": ["name", "slogan"]}),
+        ("Contact details", {
+            "fields": ["contact_person", "contact_person_function", "contact_person_phone", "contact_mail", "website"]
+        }),
+        ("Images", {
+            "fields": ["front_page_picture", "banner_picture", "logo", "logo_svg", "main_color"]
+        })
+    ]
 
     def get_queryset(self, request):
         """
