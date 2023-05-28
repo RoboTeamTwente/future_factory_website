@@ -157,21 +157,19 @@
             <div class="row">
                 {% if events|length_is:0 %}
                     <p>At this moment, there are not any upcoming events.</p>
-                {% endif %}
-                <div class="col-md-6">
+                {% else %}
                     {% for event in events %}
                         {% if forloop.counter0|divisibleby:2 %}
-                            {% include "event_thumbnail.html" with event=event only %}
+                            <div class="row w-100">
+                        {% endif %}
+                                <div class="col-md-6">
+                                    {% include "event_thumbnail.html" with event=event only %}
+                                </div>
+                        {% if not forloop.counter0|divisibleby:2 or forloop.revcounter0 == 0 %}
+                            </div>
                         {% endif %}
                     {% endfor %}
-                </div>
-                <div class="col-md-6">
-                    {% for event in events %}
-                        {% if not forloop.counter0|divisibleby:2 %}
-                            {% include "event_thumbnail.html" with event=event only %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                {% endif %}
             </div>
         <div class="row justify-content-center mt-3">
                 <a href="/events" class="btn btn-primary">More events</a>
