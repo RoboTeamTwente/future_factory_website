@@ -1,6 +1,8 @@
 # Future Factory Website Documentation
 Over here you can find the documentation for the Future Factory website.
 
+If you are looking for an user manual and not code specific documentation, then take a look at [this pdf](user_guide.pdf).
+
 The website is written in Python using the [Django](https://www.djangoproject.com/) framework. At the moment 
 [Tom Meulenkamp](https://github.com/supertom01/) from RoboTeam Twente is the lead maintainer on this website and is also 
 responsible for hosting it. However, this should not discourage other people from wanting to help and work on this site. 
