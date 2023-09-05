@@ -155,11 +155,13 @@ QUILL_CONFIGS = {
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static/public_html/dist",
+    BASE_DIR / "static/public_html/assets" if DEBUG else BASE_DIR / "static/public_html/dist",
 ]
 
 if BETA:
     STATIC_ROOT = '/var/www/future_factory_beta/static'
+elif DEBUG:
+    STATIC_ROOT = BASE_DIR / "static"
 else:
     STATIC_ROOT = '/var/www/future_factory/static'
 
