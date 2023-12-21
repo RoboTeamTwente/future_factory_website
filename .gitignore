@@ -10,3 +10,6 @@
 /static/node_modules/
 /static/package-lock.json
 /static/public_html/dist/
+
+# Do not commit any python caches
+*__pycache__*

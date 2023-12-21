@@ -193,4 +193,4 @@ else:
     EMAIL_USE_SSL = False
 
 # Admins that should receive error mails
-ADMINS = [('Tom Meulenkamp', 't.meulenkamp@roboteamtwente.nl')]
+ADMINS = [('Tom Meulenkamp', 't.meulenkamp@roboteamtwente.nl'), ('Jorn de Jong', 'j.dejong@roboteamtwente.nl')]
